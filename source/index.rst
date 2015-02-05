@@ -590,7 +590,9 @@ doctest
     python -m doctest -v <fichier.py>
 
 On peut déporter les test dans un fichier \*.txt pour ne pas trop surcharger
-la docstring
+la docstring.
+
+Cf. `Sam&Max <http://sametmax.com/un-gros-guide-bien-gras-sur-les-tests-unitaires-en-python-partie-4/>`_
 
 unitttest
 ---------
@@ -611,6 +613,8 @@ unitttest
     if __name__ == '__main__':
         unittest.main()
 
+Cf. `Sam&Max <http://sametmax.com/un-gros-guide-bien-gras-sur-les-tests-unitaires-en-python-partie-2/>`_
+
 nosetest
 --------
 
@@ -625,12 +629,34 @@ la couverture de ceux-ci.
 
     nosetests --with-doctest --with-coverage -v my\_project/
 
-pytest
-------
+py.test
+-------
 
 Très puissant outil de tests, mais fait un peu trop de trucs ésotériques au
 niveau des imports. Comme nosetest, il permet de lancer des tests issus
 d'autres suites (doctests, etc.).
+
+Lire l'article de `Sam&Max <http://sametmax.com/un-gros-guide-bien-gras-sur-les-tests-unitaires-en-python-partie-3/>`_
+vachement complet, notemment la partie *Outils* qui liste les extensions
+existantes.
+
+On peut citer : 
+
+    * capsys : permet de capturer les stdout/stderr
+    * monkeypatch : Modification d'objets à la volée
+    * tmpdir : Dossier temporaires
+
+Il y a aussi une foule d'options sympa:
+
+    * ne lancer que les tests dont le nom contient une expression
+    * ignorer un path
+    * tester aussi les doctest, unittest et nose
+
+tox
+---
+
+Si j'ai bien compris, c'est un outil d'automatisation des tests, mais il faut
+creuser/vérifier `ici <https://testrun.org/tox/latest/>`_.
 
 Documentation
 =============
