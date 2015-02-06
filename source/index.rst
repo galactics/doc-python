@@ -131,8 +131,8 @@ si la clé n'existe pas.
 .. code-block:: python
 
     >>> fruits = ['bananes', 'cerises', 'pommes', 'mangues']
-    >>> for fruit in fruits :
-	...     fruits.remove(fruit)
+    >>> for fruit in fruits:
+    ...     fruits.remove(fruit)
     >>> fruits
     ['cerises', 'mangues']
 
@@ -197,22 +197,25 @@ Formatage
 
 .. code-block:: python
 
-    >>> # WRONG : création de 6 objets string
-    >>> text = 'text' + str(1) + 'another text' + str(2) + 'fini'
+    >>> # MAAAAAAL
+    >>> text = 'text ' + str(1) + ' another text ' + str(2) + ' fini'
 
-    >>> # RIGHT
-    >>> text = 'text %s another text %d fini' % (1, 2)
-    >>> text = 'text {0} another text {1} fini'.format(1,2)
+    >>> # Bien !
+    >>> text = 'text %d another text %d fini' % (1, 2)
+    >>> text = 'text {0} another text {1} fini'.format(1, 2)
+    >>> text = 'text {premier} another text {second} fini'.format(premier=1, second=2)
 
 La concatenation de chaines de caractères est beaucoup plus rapide en passant
 par string.join() que par concaténation directe (+). Il faut donc le préférer
 pour de grands ensembles de données.
 
-Pour la lecture de fichiers, préférer splitline::
+Pour la lecture de fichiers, préférer splitline
 
-    with open('text.txt') as f :
-        for line in f.read().splitlines() :
-            # Action !
+.. code-block:: python
+
+    with open('text.txt') as f:
+        for lines in f.read().splitlines():
+            # Action !
 
 Pour la lecture de fichier avec des encodages autres que ASCII utiliser
 :py:meth:`codecs.open` pour directement spécifier l'encodage du fichier à lire
@@ -268,24 +271,26 @@ Scope
 Une variable est accessible depuis n'importe quel sous-scope en lecture, mais
 pas en écriture.
 Pour pouvoir la modifier dans un sous-scope, il faut la décraler comme
-:keyword:`global`, mais c'est :ref:`mal ! <mal>`::
+:keyword:`global`, mais c'est :ref:`mal ! <mal>`
+
+.. code-block:: python
 
     variable = 40
 
-    def modifier(value) :
+    def modifier(value):
         variable += value
-        // Renvoie une UnboundLocalError
+        # Renvoie une UnboundLocalError
         return variable
 
-    def modifier(value) :
-        // Fonctionne
+    def modifier(value):
+        # Fonctionne
         return variable + value
 
-    def modifier(value) :
+    def modifier(value):
         global variable
         variable += value
-        // Fonctionne mais à éviter
-        // parce que global CAYMAL
+        # Fonctionne mais à éviter
+        # parce que global CAYMAL
         return variable
 
 Fonctions
@@ -350,7 +355,7 @@ pour permettre une validation des entrées/sorties.
 @property
 ^^^^^^^^^
 
-Transforme une méthode en attribut (read-oly)::
+Transforme une méthode en attribut (read-only)::
 
     >>> class Parrot(object):
     ...     def __init__(self):
@@ -462,9 +467,9 @@ attributs et méthodes.
 
 .. code-block:: python
 
-    class MyClass(type) :
+    class MyClass(type):
         def __new__(cls, name):
-            // ...
+            # ...
 
 .. todo Compléter l'exemple
 
@@ -482,10 +487,12 @@ des états entre objets.
 Context Manager
 ===============
 
-:py:func:`contextlib.contextmanager`. Une utilisation régulière est ::
+:py:func:`contextlib.contextmanager`. Une utilisation régulière est
 
-    with open('file.txt') as f :
-        // on fait des trucs ici
+.. code-block:: python
+
+    with open('file.txt') as f:
+        # on fait des trucs ici
 
 qui s'occupe de refermer le fichier automatiquement en fin d'utilisation.
 C'est un mix de décorateur et générateur.
@@ -514,9 +521,9 @@ liée dynamiquement (symlink). On peut l'activer en faisant
 setuptools
 ^^^^^^^^^^
 
-.. code-block:: python
+.. code-block:: shell
 
-    python setup develop
+    python setup.py develop
 
 permet de faire un lien symbolique vers la librairie en cours de développement.
 
@@ -546,10 +553,10 @@ Debug
 
     import pdb; pdb.set_trace()
 
-``l`` affiche le contexte
-``a`` affiche les variables
-``c`` continue
-``n`` ligne suivante
+* ``l`` affiche le contexte
+* ``a`` affiche les variables
+* ``c`` continue
+* ``n`` ligne suivante
 
 :pep:`8`
 ========
@@ -673,7 +680,7 @@ Documentation
 Profiling
 =========
 
-.. code-block:: python
+.. code-block:: shell
 
     python -m cProfile -o profile.pstats fibo.py
 
