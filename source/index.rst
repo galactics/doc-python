@@ -146,9 +146,9 @@ L'utilisation de boucles pour parcourir des tableaux est très coûteuse,
 surtout lorsqu'il y a des imbrications. Tous les objets ne sont pas égaux face
 à ce problème, les objets "rapides" sont, dans l'ordre:
 
-    #. dict
-    #. tuple
-    #. list
+    #. :py:obj:`dict`
+    #. :py:obj:`tuple`
+    #. :py:obj:`list`
 
 On peut également utiliser les objets :py:obj:`array.array`, qui permettent de
 faire des tableaux d'un seul type d'objet.
@@ -485,13 +485,13 @@ Context Manager
 :py:func:`contextlib.contextmanager`. Une utilisation régulière est ::
 
     with open('file.txt') as f :
-        ///
+        // on fait des trucs ici
 
 qui s'occupe de refermer le fichier automatiquement en fin d'utilisation.
 C'est un mix de décorateur et générateur.
 C'est très intéressant dans le cas de socket, connexions à des BDD, ouvertures
 de fichierts, etc.
-Voir l'article de `Sam&Max <http://sametmax.com/les-context-managers-et-le-mot-cle-with-en-python/>`_.
+Voir l'article de `Sam\&Max <http://sametmax.com/les-context-managers-et-le-mot-cle-with-en-python/>`__.
 
 Modules
 =======
@@ -592,7 +592,7 @@ doctest
 On peut déporter les test dans un fichier \*.txt pour ne pas trop surcharger
 la docstring.
 
-Cf. `Sam&Max <http://sametmax.com/un-gros-guide-bien-gras-sur-les-tests-unitaires-en-python-partie-4/>`_
+Cf. `Sam\&Max <http://sametmax.com/un-gros-guide-bien-gras-sur-les-tests-unitaires-en-python-partie-4/>`__
 
 unitttest
 ---------
@@ -613,7 +613,7 @@ unitttest
     if __name__ == '__main__':
         unittest.main()
 
-Cf. `Sam&Max <http://sametmax.com/un-gros-guide-bien-gras-sur-les-tests-unitaires-en-python-partie-2/>`_
+Cf. `Sam\&Max <http://sametmax.com/un-gros-guide-bien-gras-sur-les-tests-unitaires-en-python-partie-2/>`__
 
 nosetest
 --------
@@ -636,7 +636,7 @@ Très puissant outil de tests, mais fait un peu trop de trucs ésotériques au
 niveau des imports. Comme nosetest, il permet de lancer des tests issus
 d'autres suites (doctests, etc.).
 
-Lire l'article de `Sam&Max <http://sametmax.com/un-gros-guide-bien-gras-sur-les-tests-unitaires-en-python-partie-3/>`_
+Lire l'article de `Sam\&Max <http://sametmax.com/un-gros-guide-bien-gras-sur-les-tests-unitaires-en-python-partie-3/>`__
 vachement complet, notemment la partie *Outils* qui liste les extensions
 existantes.
 
@@ -702,18 +702,18 @@ Par contre ce n'est pas super précis, parce que python n'a que des références
 Librairies sympas
 =================
 
-+----------------------------------+------------------------+----------------------------------------------------------+
-| Nom                              |                        | Description                                              |
-+==================================+========================+==========================================================+
++----------------------------------+-----------------------------------------------------------------------------------+
+| Nom                              | Description                                                                       |
++==================================+===================================================================================+
 | :py:mod:`__future__`             | Permet d'avoir, en python2, des comportements apparus en python3                  |
 |                                  | (unicode partout, print, etc.)                                                    |
-+----------------------------------+------------------------+----------------------------------------------------------+
++----------------------------------+-----------------------------------------------------------------------------------+
 | `BeautifulSoup`_                 |  html et xml, même très mal formatté                                              |
-+----------------------------------+------------------------+----------------------------------------------------------+
++----------------------------------+-----------------------------------------------------------------------------------+
 | csv                              | Parsing de fichiers CSV                                                           |
-+----------------------------------+------------------------+----------------------------------------------------------+
++----------------------------------+-----------------------------------------------------------------------------------+
 | Logging                          | Module de gestion des niveaux de log                                              |
-+----------------------------------+------------------------+----------------------------------------------------------+
++----------------------------------+-----------------------------------------------------------------------------------+
 | lxml                             | Parsing html et xml                                                               |
 +----------------------------------+------------------------+----------------------------------------------------------+
 | :py:mod:`multiprocessing`        | Utilisent la même API, | Faire des forks comme un fou                             |
@@ -725,34 +725,38 @@ Librairies sympas
 +----------------------------------+------------------------+----------------------------------------------------------+
 | `Asyncio`_                       | Multi-threading (python3.4, mais existe en non-garanti sous python2,              |
 |                                  | sous le nom de trollus).                                                          |
-+----------------------------------+------------------------+----------------------------------------------------------+
-| :py:mod:`fabric`                 | Ssh, pour faire du déploiement par exemple, basé sur paramiko                     |
-+----------------------------------+------------------------+----------------------------------------------------------+
++----------------------------------+-----------------------------------------------------------------------------------+
+| `Fabric`_                        | Ssh, pour faire du déploiement par exemple, basé sur paramiko                     |
++----------------------------------+-----------------------------------------------------------------------------------+
 | Hachoir                          | Lecture de fichiers, métadonnées, réparations de binaires dégradés                |
-+----------------------------------+------------------------+----------------------------------------------------------+
++----------------------------------+-----------------------------------------------------------------------------------+
 | Paramiko                         | ssh                                                                               |
-+----------------------------------+------------------------+----------------------------------------------------------+
++----------------------------------+-----------------------------------------------------------------------------------+
 | Pickle                           | Sérailisation                                                                     |
-+----------------------------------+------------------------+----------------------------------------------------------+
++----------------------------------+-----------------------------------------------------------------------------------+
 | PIL                              | Python Imaging Library (pip install pillow ou pilotk)                             |
-+----------------------------------+------------------------+----------------------------------------------------------+
++----------------------------------+-----------------------------------------------------------------------------------+
 | Queue                            | Gestion de queues (FIFO, LIFO, etc...)                                            |
-+----------------------------------+------------------------+----------------------------------------------------------+
++----------------------------------+-----------------------------------------------------------------------------------+
 | `Scapy`_                         | Manipulation de paquets réseaux                                                   |
-+----------------------------------+------------------------+----------------------------------------------------------+
++----------------------------------+-----------------------------------------------------------------------------------+
 | South                            | Pour Django (changement de schéma de données)                                     |
-+----------------------------------+------------------------+----------------------------------------------------------+
++----------------------------------+-----------------------------------------------------------------------------------+
 | SQLAlchemy                       | Connection à une BdD SQL                                                          |
-+----------------------------------+------------------------+----------------------------------------------------------+
++----------------------------------+-----------------------------------------------------------------------------------+
 | zodb                             | Bdd historisée et transactionnelle                                                |
 |                                  | (très rapide en lecture, mais moins en écriture).                                 |
-+----------------------------------+------------------------+----------------------------------------------------------+
++----------------------------------+-----------------------------------------------------------------------------------+
 
 .. Liste des liens vers les différentes docs en ligne
 .. _Asyncio: https://www.python.org/dev/peps/pep-3156/
 .. _BeautifulSoup: http://www.crummy.com/software/BeautifulSoup/bs4/doc/
+.. _Fabric: http://docs.fabfile.org/en/1.10/
 .. _Scapy: http://secdev.org/projects/scapy/
 
+Sinon il y a la super liste de
+`Sam\&Max <http://sametmax.com/tres-grand-listing-des-libs-tierce-partie-les-plus-utiles-en-python/>`__.
+Ils essayent de la mettreà jour régulièrement.
 
 .. _mal:
 
@@ -760,6 +764,13 @@ Le mal !
 ========
 
 ``import *``, :py:func:`eval` et :keyword:`global` : c'est **mal** !
+
+Références
+==========
+
+* `Doc python officielle <https://docs.python.org/>`_ (attention à choisir la bonne version)
+* `Les PEPs <https://www.python.org/dev/peps/>`_
+* `Sam\&Max <http://sametmax.com>`__
 
 Indices et tables
 ==================
