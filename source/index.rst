@@ -535,16 +535,18 @@ Gère (mal) les dépedances des paquets.
 buildout
 ^^^^^^^^
 
+Gestionnaire d'installation et de dépendences, qui permet apparement d'isoler
+de gérer assez finement les impacts que ça peut avoir sur le système
+(site-packages, versions concurentes). Il y de gros tutos et guides
+sur le `site officiel <http://www.buildout.org/en/latest/>`_.
+
 À installer depuis `bootstrap <http://downloads.buildout.org/2/bootstrap.py>`_,
-permet d'isoler du site-packages système
 
-recipe : 3 méthodes:
-
-    * install
-    * update
-    * unistall
+Fonctionne sur le modèle des recipes
 
 .. todo:: à compléter
+
+Lu ici-et-là qu'il est quand même assez lourd et difficilement configurable.
 
 Debug
 =====
