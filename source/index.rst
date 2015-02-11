@@ -139,6 +139,95 @@ si la clé n'existe pas.
 List comprehension
 ------------------
 
+Aussi appelé list-inextension, c'est la création de séquences directement. Par
+exemple
+
+.. code-block:: python
+
+    >>> fruits = ['banane', 'mangue', 'fraise', 'cerise', 'abricot', 'pomme']
+    >>> fruits_i = [fruit for fruit in fruits if 'i' in fruit]
+    >>> fruits_i
+    ['fraise', 'cerise', 'abricot']
+
+Ce type d'opération fonctionne avec toutes les séquences (list, tuple, dict,
+etc.) et est très rapide d'un point de vue calculatoire.
+
+unpacking
+---------
+
+L'unpacking se fait grâce à l'opérateur ``\*`` (splat).
+
+En gros ça permet d'extraire des données d'un itérable. Dans certains cas
+même automatique
+
+.. code-block:: python
+
+    >>> super_liste = [1, 2, 3]
+    >>> a, b, c = super_liste
+    >>> a
+    1
+    >>> b
+    2
+    >>> c
+    3
+
+En python 3 on peut même faire de l'unpacking partiel
+
+.. code-block:: python
+
+    >>> super_liste = [1, 2, 3, 4]
+    >>> a, *b = super_liste
+    >>> a
+    1
+    >>> b
+    [2, 3, 4]
+    >>> super_liste = [1, 2, 3, 4]
+    >>> a, *b, c = super_liste
+    >>> a
+    1
+    >>> b
+    [2, 3]
+    >>> c
+    4
+
+On peut aussi l'utiliser directement dans une boucle
+
+.. code-block:: python
+
+    >>> a = [[1, 'hello'],[2, 'world']]
+    >>> for i, word in a:
+    ...     print("%d %s" % (i, word))
+    ...
+    1 hello
+    2 world
+
+Mais là où l'unpacking est surtout utile c'est pour passer des arguments à
+une fonction
+
+.. code-block:: python
+
+    >>> def add(a, b, c):
+    ...     return a + b + c
+    ...
+    >>> add(1, 2, 3)
+    6
+    >>> values = [1,2,3]
+    >>> add(*values)
+
+Ça marche également avec les :py:obj:`dict` en argument de fonction, mais dans
+ce cas il faut utiliser le double ``*``.
+
+.. code-block:: python
+
+    >>> def fonction_bizarre(arg1, arg2):
+    ...     print("mon arg1 est {0}".format(arg1))
+    ...     print("mon arg2 est {0}".format(arg2))
+    ...
+    >>> args = {'arg1': 'hello', 'arg2': 'world'}
+    >>> fonction_bizarre(**args)
+    mon arg1 est hello
+    mon arg2 est world
+
 Optimisation
 ------------
 
@@ -173,7 +262,9 @@ ré-implémentation en C du module, souvent beaucoup plus rapide.
 Autres types de séquences
 -------------------------
 
-Les :py:obj:`namedtuple` associent une clé à un index.
+On peut également aller voir sur :py:mod:`collections` et le tuto sur
+`PyMOTW <http://pymotw.com/2/collections/index.html>`_ pour avoir de nouveaux
+types (:py:obj:`collections.namedtuple`, :py:obj:`collections.OrderedDict`, etc.).
 
 .. _iterateurs:
 
@@ -779,6 +870,7 @@ Références
 
 * `Doc python officielle <https://docs.python.org/>`_ (attention à choisir la bonne version)
 * `Les PEPs <https://www.python.org/dev/peps/>`_
+* `Python Module Of The Week <http://pymotw.com/2/>`_ présentation des modules de la stdlib. Très complets
 * `Sam\&Max <http://sametmax.com>`__
 
 Indices et tables
