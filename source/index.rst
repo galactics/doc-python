@@ -636,17 +636,17 @@ la couverture de ceux-ci.
 
 .. code-block:: shell
 
-    nosetests --with-doctest --with-coverage -v my\_project/
+    nosetests --with-doctest --with-coverage -v myProject/
 
 py.test
 -------
 
 Très puissant outil de tests, mais fait un peu trop de trucs ésotériques au
 niveau des imports. Comme nosetest, il permet de lancer des tests issus
-d'autres suites (doctests, etc.).
+d'autres suites (doctests, unittest, etc.).
 
 Lire l'article de `Sam\&Max <http://sametmax.com/un-gros-guide-bien-gras-sur-les-tests-unitaires-en-python-partie-3/>`__
-vachement complet, notemment la partie *Outils* qui liste les extensions
+vachement complet, notamment la partie *Outils* qui liste les extensions
 existantes.
 
 On peut citer : 
