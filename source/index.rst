@@ -18,6 +18,11 @@ le cours **Python Avancé** reçu en décembre 2014 et donné par
 `Jean-Philippe Camguilhem <https://github.com/jpcw>`_ de
 `Makina-Corpus <http://makina-corpus.com/>`_.
 
+sys.path
+========
+
+.. todo:: Expliquer l'importance du truc
+
 Mémoire
 =======
 
@@ -155,7 +160,7 @@ etc.) et est très rapide d'un point de vue calculatoire.
 unpacking
 ---------
 
-L'unpacking se fait grâce à l'opérateur ``\*`` (splat).
+L'unpacking se fait grâce à l'opérateur ``*`` (splat).
 
 En gros ça permet d'extraire des données d'un itérable. Dans certains cas
 même automatique
@@ -422,9 +427,12 @@ Exceptions
 POO
 ===
 
+MRO
+---
+
 Quoi qu'il arrive, hériter de :py:obj:`object`. On bénéficie alors du
 :abbr:`MRO (Method Resolution Order)`, qui permet de se débrouiller avec
-l'héritage multiple.
+l'héritage multiple. Cf. le tuto de `Makina Corpus <http://makina-corpus.com/blog/metier/2014/python-tutorial-understanding-python-mro-class-search-path>`_.
 
 Conventions de nommage
 ----------------------
