@@ -21,7 +21,15 @@ le cours **Python Avancé** reçu en décembre 2014 et donné par
 sys.path
 ========
 
-.. todo:: Expliquer l'importance du truc
+La liste :py:obj:`sys.path` a pour rôle de définir, pour python, les
+emplacements où il doit chercher les librairies à charger.
+
+Bien que déconseillé, il est possible de modifier ``sys.path`` pour permettre
+de charger dynamiquement des librairies.
+
+Par défaut, celle-ci prend la valeur du dossier contenant le script lancé, de
+la variable d'environnement :envvar:`PYTHONPATH`, l'emplacement de la stdlib
+et le site-packages, dans cet ordre.
 
 Mémoire
 =======
@@ -880,6 +888,11 @@ Références
 * `Les PEPs <https://www.python.org/dev/peps/>`_
 * `Python Module Of The Week <http://pymotw.com/2/>`_ présentation des modules de la stdlib. Très complets
 * `Sam\&Max <http://sametmax.com>`__
+
+TODO
+====
+
+.. todolist::
 
 Indices et tables
 ==================
