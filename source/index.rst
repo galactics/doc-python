@@ -831,16 +831,16 @@ Librairies sympas
 +----------------------------------+-----------------------------------------------------------------------------------+
 | `BeautifulSoup`_                 |  html et xml, même très mal formatté                                              |
 +----------------------------------+-----------------------------------------------------------------------------------+
-| csv                              | Parsing de fichiers CSV                                                           |
+| :py:mod:`csv`                    | Parsing de fichiers CSV                                                           |
 +----------------------------------+-----------------------------------------------------------------------------------+
-| Logging                          | Module de gestion des niveaux de log                                              |
+| :py:mod:`logging`                | Module de gestion des niveaux de log                                              |
 +----------------------------------+-----------------------------------------------------------------------------------+
-| lxml                             | Parsing html et xml                                                               |
+| `lxml`_                          | Parsing html et xml                                                               |
 +----------------------------------+------------------------+----------------------------------------------------------+
 | :py:mod:`multiprocessing`        | Utilisent la même API, | Faire des forks comme un fou                             |
 +----------------------------------+ ils sont donc          +----------------------------------------------------------+
 | :py:mod:`threading`              | facilement             | À préférer à :py:mod:`thread`, mais peut être            |
-|                                  | interchangeable        | limité par le :term:`GIL <global interpreter lock>`      |
+|                                  | interchangeable        | limité par le :term:`GIL <global interpreter lock>`.     |
 |                                  |                        | Reste quand même super s'il y a beaucoup d'IO (fichiers, |
 |                                  |                        | RAM, etc.).                                              |
 +----------------------------------+------------------------+----------------------------------------------------------+
@@ -849,23 +849,21 @@ Librairies sympas
 +----------------------------------+-----------------------------------------------------------------------------------+
 | `Fabric`_                        | Ssh, pour faire du déploiement par exemple, basé sur paramiko                     |
 +----------------------------------+-----------------------------------------------------------------------------------+
-| Hachoir                          | Lecture de fichiers, métadonnées, réparations de binaires dégradés                |
+| `Hachoir`_                       | Lecture de fichiers, métadonnées, réparations de binaires dégradés                |
 +----------------------------------+-----------------------------------------------------------------------------------+
-| Paramiko                         | ssh                                                                               |
+| `Paramiko`_                      | ssh                                                                               |
 +----------------------------------+-----------------------------------------------------------------------------------+
-| Pickle                           | Sérailisation                                                                     |
+| :py:mod:`pickle`                 | Sérailisation                                                                     |
 +----------------------------------+-----------------------------------------------------------------------------------+
-| PIL                              | Python Imaging Library (pip install pillow ou pilotk)                             |
+| `PIL`_                           | Python Imaging Library (pip install pillow ou pilotk)                             |
 +----------------------------------+-----------------------------------------------------------------------------------+
-| Queue                            | Gestion de queues (FIFO, LIFO, etc...)                                            |
+| :py:mod:`Queue`                  | Gestion de queues (FIFO, LIFO, etc...). voir :py:mod:`queue` en python 3.         |
 +----------------------------------+-----------------------------------------------------------------------------------+
 | `Scapy`_                         | Manipulation de paquets réseaux                                                   |
 +----------------------------------+-----------------------------------------------------------------------------------+
-| South                            | Pour Django (changement de schéma de données)                                     |
+| `SQLAlchemy`_                    | Connection à une BdD SQL                                                          |
 +----------------------------------+-----------------------------------------------------------------------------------+
-| SQLAlchemy                       | Connection à une BdD SQL                                                          |
-+----------------------------------+-----------------------------------------------------------------------------------+
-| zodb                             | Bdd historisée et transactionnelle                                                |
+| `zodb`_                          | Bdd historisée et transactionnelle                                                |
 |                                  | (très rapide en lecture, mais moins en écriture).                                 |
 +----------------------------------+-----------------------------------------------------------------------------------+
 
@@ -873,7 +871,13 @@ Librairies sympas
 .. _Asyncio: https://www.python.org/dev/peps/pep-3156/
 .. _BeautifulSoup: http://www.crummy.com/software/BeautifulSoup/bs4/doc/
 .. _Fabric: http://docs.fabfile.org/en/1.10/
+.. _Hachoir: https://bitbucket.org/haypo/hachoir/wiki/Home
+.. _lxml: http://lxml.de/
+.. _Paramiko: https://github.com/paramiko/paramiko/
+.. _PIL: http://pillow.readthedocs.org/
 .. _Scapy: http://secdev.org/projects/scapy/
+.. _SQLAlchemy: http://www.sqlalchemy.org/
+.. _zodb: http://www.zodb.org/en/latest/
 
 Sinon il y a la super liste de
 `Sam\&Max <http://sametmax.com/tres-grand-listing-des-libs-tierce-partie-les-plus-utiles-en-python/>`__.
