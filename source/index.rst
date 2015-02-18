@@ -301,7 +301,7 @@ Formatage
 
 .. code-block:: python
 
-    >>> # MAAAAAAL
+    >>> # MAAAAAAL, on crée 6 objets string différents
     >>> text = 'text ' + str(1) + ' another text ' + str(2) + ' fini'
 
     >>> # Bien !
@@ -322,11 +322,16 @@ Pour la lecture de fichiers, préférer splitline
             # Action !
 
 Pour la lecture de fichier avec des encodages autres que ASCII utiliser
-:py:meth:`codecs.open` pour directement spécifier l'encodage du fichier à lire
+:py:func:`codecs.open` pour directement spécifier l'encodage du fichier à lire
 et éviter d'avoir à faire de decode.
 
-Les remplacements sont plus efficaces avec :py:meth:`string.translate` que par
-:py:meth:`string.replace` pour les caractères.
+.. note::
+
+    En python 3,  la fonction open se comporte comme :py:func:`codecs.open`
+    avec l'encoding 'utf-8' par défaut.
+
+Les remplacements sont plus efficaces avec :py:func:`string.translate` que par
+:py:func:`string.replace` pour les caractères.
 
 Encoding
 --------
