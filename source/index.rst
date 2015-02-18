@@ -41,7 +41,7 @@ Le mot clé :keyword:`is` permet une comparaison des emplacements mémoires. Il
 ne faut pas le confondre avec ``==`` qui lui compare les valeurs.
 
 Le mot-clé :keyword:`is` fait en fait appel à la fonction :py:func:`id`, qui
-retourne l'emplacement mémoire pointé par la variable.::
+retourne l'emplacement mémoire pointé par la variable::
 
     >>> a = 25614
     >>> b = 25614
@@ -75,9 +75,9 @@ Conditions
 ==========
 
 En python tout est vrai, sauf ``0``, ``False``, ``None`` et tous les conteneurs
-vides (``[]``, ``{}``, etc.).
+vides (``""``, ``()``, ``[]``, ``{}``, etc.).
 
-On peut surcharger ça sur un objet a sois en utilisant les méthodes
+On peut surcharger ça sur un objet en utilisant les méthodes
 :py:meth:`__nonzero__` ou :py:meth:`__len__` (si :py:meth:`__nonzero__` n'est
 pas défini).
 
@@ -116,7 +116,7 @@ Voir :ref:`typesseq` pour plus de détails.
 :py:obj:`tuple`
 ---------------
 
-Le tuple est immuable, et c'est le seul qui fonctionne comme ça.
+Le tuple est immuable.
 
 :py:obj:`dict`
 --------------
@@ -163,7 +163,7 @@ exemple
     ['fraise', 'cerise', 'abricot']
 
 Ce type d'opération fonctionne avec toutes les séquences (list, tuple, dict,
-etc.) et est très rapide d'un point de vue calculatoire.
+etc.) et est très efficace d'un point de vue CPU.
 
 unpacking
 ---------
@@ -171,7 +171,7 @@ unpacking
 L'unpacking se fait grâce à l'opérateur ``*`` (splat).
 
 En gros ça permet d'extraire des données d'un itérable. Dans certains cas
-même automatique
+c'est même automatique
 
 .. code-block:: python
 
@@ -258,7 +258,7 @@ faire des tableaux d'un seul type d'objet.
 Numpy et Scipy font appel à des optimisations en C et permettent donc de gérer
 des objets volumineux plus facilement.
 
-L'utilisation de cython et PyPy permet de faire gagner en vitesse d'exécution.
+L'utilisation de Cython et PyPy permet de faire gagner en vitesse d'exécution.
 
 On peut, quand c'est possible utiliser les :ref:`générateurs <generateurs>`,
 comme :py:func:`xrange` à la place de :py:func:`range`.
