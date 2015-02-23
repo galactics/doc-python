@@ -517,26 +517,37 @@ On peut créer ses propres décorateurs, de manière à ajouter une
 fonctionnalitée particulière. Par exemple, le décorateur suivant permet de
 mettre en cache les sorties d'une fonction::
 
+    #!/usr/bin/env python
+    # -*- coding: utf-8 -*-
+
     from functools import wraps
 
     def memorize(func):
         memo = {}
         @wraps(func)
-        def memorized_func(func_arg):
+        def memorized_func(x):
             if x not in memo:
-                memo[func_arg] = f(func_arg)
+                memo[x] = func(x)
             return memo[x]
 
         return memorized_func
 
+    calls = 0
+
     @memorize
     def fib(n):
+        global calls
+        calls += 1
+
         if n == 0:
             return 0
         elif n == 1:
             return 1
         else:
             return fib(n-1) + fib(n-2)
+
+    print "fib :", fib(40)
+    print "calls :", calls
 
 Le décorateur :py:func:`wraps` permet de faire passer le ``__doc__`` et le
 ``__name__`` de la fonction décorée (fib) à la fonction décoratrice (_memorize).
@@ -836,14 +847,14 @@ Librairies sympas
 | :py:mod:`logging`                | Module de gestion des niveaux de log                                              |
 +----------------------------------+-----------------------------------------------------------------------------------+
 | `lxml`_                          | Parsing html et xml                                                               |
-+----------------------------------+------------------------+----------------------------------------------------------+
-| :py:mod:`multiprocessing`        | Utilisent la même API, | Faire des forks comme un fou                             |
-+----------------------------------+ ils sont donc          +----------------------------------------------------------+
-| :py:mod:`threading`              | facilement             | À préférer à :py:mod:`thread`, mais peut être            |
-|                                  | interchangeable        | limité par le :term:`GIL <global interpreter lock>`.     |
-|                                  |                        | Reste quand même super s'il y a beaucoup d'IO (fichiers, |
-|                                  |                        | RAM, etc.).                                              |
-+----------------------------------+------------------------+----------------------------------------------------------+
++----------------------------------+----------------------------------------------------------+------------------------+
+| :py:mod:`multiprocessing`        | Faire des forks comme un fou                             | Utilisent la même API, |
++----------------------------------+----------------------------------------------------------+ ils sont donc          +
+| :py:mod:`threading`              | À préférer à :py:mod:`thread`, mais peut être            | facilement             |
+|                                  | limité par le :term:`GIL <global interpreter lock>`.     | interchangeable        |
+|                                  | Reste quand même super s'il y a beaucoup d'IO (fichiers, |                        |
+|                                  | RAM, etc.).                                              |                        |
++----------------------------------+----------------------------------------------------------+------------------------+
 | `Asyncio`_                       | Multi-threading (python3.4, mais existe en non-garanti sous python2,              |
 |                                  | sous le nom de trollus).                                                          |
 +----------------------------------+-----------------------------------------------------------------------------------+
@@ -894,6 +905,7 @@ Références
 ==========
 
 * `Doc python officielle <https://docs.python.org/>`_ (attention à choisir la bonne version)
+* La `Librairie Standard <https://docs.python.org/2/library/index.html>`_
 * `Les PEPs <https://www.python.org/dev/peps/>`_
 * `Python Module Of The Week <http://pymotw.com/2/>`_ présentation des modules de la stdlib. Très complets
 * `Sam\&Max <http://sametmax.com>`__
