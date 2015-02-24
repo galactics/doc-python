@@ -111,7 +111,20 @@ Séquences
 Désigne les :py:obj:`str`, :py:obj:`list`, :py:obj:`dict`, :py:obj:`set`,
 :py:obj:`tuple`, :py:obj:`bytearray`, etc.
 
-Voir :ref:`typesseq` pour plus de détails.
+Voir :ref:`cette documentation <typesseq>` pour plus de détails.
+
+Fonctions et lib utiles
+-----------------------
+
+    * :py:func:`enumerate`
+    * :py:func:`any`, :py:func:`filter` et :py:func:`map`
+    * :py:func:`len`
+    * :py:func:`max` et :py:func:`min`
+    * :py:func:`range` et :py:func:`xrange`
+    * :py:func:`reversed` et :py:func:`sorted`
+    * :py:func:`zip`
+
+et aussi :py:mod:`itertools`.
 
 :py:obj:`tuple`
 ---------------
