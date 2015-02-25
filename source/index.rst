@@ -27,9 +27,12 @@ emplacements où il doit chercher les librairies à charger.
 Bien que déconseillé, il est possible de modifier ``sys.path`` pour permettre
 de charger dynamiquement des librairies.
 
-Par défaut, celle-ci prend la valeur du dossier contenant le script lancé, de
-la variable d'environnement :envvar:`PYTHONPATH`, l'emplacement de la stdlib
-et le site-packages, dans cet ordre.
+Par défaut, celle-ci prend, dans l'ordre, les valeurs suivantes:
+
+    1. le dossier contenant le script lancé
+    2. les emplacements de la variable d'environnement :envvar:`PYTHONPATH`
+    3. l'emplacement de la stdlib
+    4. le site-packages
 
 Mémoire
 =======
@@ -77,7 +80,7 @@ Conditions
 En python tout est vrai, sauf ``0``, ``False``, ``None`` et tous les conteneurs
 vides (``""``, ``()``, ``[]``, ``{}``, etc.).
 
-On peut surcharger ça sur un objet en utilisant les méthodes
+On peut obtenir le même comportement sur un objet en utilisant les méthodes
 :py:meth:`__nonzero__` ou :py:meth:`__len__` (si :py:meth:`__nonzero__` n'est
 pas défini).
 
