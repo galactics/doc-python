@@ -24,8 +24,8 @@ sys.path
 La liste :py:obj:`sys.path` a pour rôle de définir, pour python, les
 emplacements où il doit chercher les librairies à charger.
 
-Bien que déconseillé, il est possible de modifier ``sys.path`` pour permettre
-de charger dynamiquement des librairies.
+Bien que déconseillé, il est possible de modifier :py:obj:`sys.path` pour
+permettre de charger dynamiquement des librairies.
 
 Par défaut, celle-ci prend, dans l'ordre, les valeurs suivantes:
 
@@ -81,8 +81,9 @@ En python tout est vrai, sauf ``0``, ``False``, ``None`` et tous les conteneurs
 vides (``""``, ``()``, ``[]``, ``{}``, etc.).
 
 On peut obtenir le même comportement sur un objet en utilisant les méthodes
-:py:meth:`__nonzero__` ou :py:meth:`__len__` (si :py:meth:`__nonzero__` n'est
-pas défini).
+:py:meth:`__nonzero__() <object.__nonzero__>` ou
+:py:meth:`__len__() <object.__len__>` (si
+:py:meth:`__nonzero__() <object.__nonzero__>` n'est pas défini).
 
 Muable/Immuable
 ===============
@@ -145,7 +146,7 @@ clé-valeur sous forme de tuple.
 
 :py:meth:`dict.iteritems` fait la même chose en renvoyant un
 :ref:`itérateur <iterateurs>`.
-En python3 ``items()`` a le comportement de ``iteritems`` en python2.
+En python3 :py:meth:`dict.items` a le comportement de :py:meth:`dict.iteritems` en python2.
 
 Les fonctions :py:meth:`dict.setdefault` et :py:meth:`dict.get` sont à
 utiliser lorsqu'on veut avoir une valeur par défaut dans un tableau associatif
@@ -356,8 +357,8 @@ Une chaine de caractère (:py:obj:`str`) est une séquence d'octets.
 Par défaut python2 est en ASCII. Par contre dans un termial, python détecte
 l'encoding du tty et accèpte donc son encodage (ex : utf-8).
 
-Il y a une **différence** entre la représentation **unicode** et l'encoding
-**utf-8**.
+.. note:: Il y a une différence entre la représentation **unicode** et
+   l'encoding **utf-8**.
 
 Python peut convertir de charset/codepage/encoding vers unicode grâce à la
 commande :py:meth:`string.decode` et l'inverse via :py:meth:`string.encode`.
@@ -371,12 +372,12 @@ La bonne méthode est :
 
 .. warning:: DANGER !!
 
-.. code-block:: python
+    .. code-block:: python
 
-    >>> 'héhé'.isalpha()
-    False
-    >>> u'héhé'.isalpha()
-    True
+        >>> 'héhé'.isalpha()
+        False
+        >>> u'héhé'.isalpha()
+        True
 
 Path
 ====
@@ -396,7 +397,7 @@ Scope
 Une variable est accessible depuis n'importe quel sous-scope en lecture, mais
 pas en écriture.
 Pour pouvoir la modifier dans un sous-scope, il faut la décraler comme
-:keyword:`global`, mais c'est :ref:`mal ! <mal>`
+:keyword:`global`, mais c'est :ref:`mal <mal>` !
 
 .. code-block:: python
 
@@ -428,11 +429,10 @@ pas encore, il y aura erreur.
 Boucles
 =======
 
-On peut utiliser la méthode :keyword:`for`-:keyword:`else`. Le code contenu
-dans ``else`` ne sera exécuté que dans le cas ou for n'est pas interrompu ou
-breaké.
+On peut utiliser la méthode :keyword:`for-else <for>`. Le code contenu dans
+``else`` ne sera exécuté que dans le cas ou for n'est pas interrompu ou breaké.
 
-Le même principe est applicable à :keyword:`while`-:keyword:`else`.
+Le même principe est applicable à :keyword:`while-else <while>`.
 
 Exceptions
 ==========
@@ -442,10 +442,12 @@ Exceptions
     >>> try:
     ...     x = 5/0
     ... except:
-    ...     print "Hello, il y a une erreur"
+    ...     print("Hello, il y a une erreur")
     ...     raise
+    ... else:
+    ...     print("Je passe ici si aucune exception n'est levée")
     ... finally:
-    ...     print "Je passe ici quoiqu'il arrive"
+    ...     print("Je passe ici quoiqu'il arrive")
     ...
     Hello, il y a une erreur
     Je passe ici quoiqu'il arrive
@@ -461,7 +463,9 @@ MRO
 
 Quoi qu'il arrive, hériter de :py:obj:`object`. On bénéficie alors du
 :abbr:`MRO (Method Resolution Order)`, qui permet de se débrouiller avec
-l'héritage multiple. Cf. le tuto de `Makina Corpus <http://makina-corpus.com/blog/metier/2014/python-tutorial-understanding-python-mro-class-search-path>`_.
+l'héritage multiple. Cf. le `tuto de Makina Corpus`_.
+
+.. _tuto de Makina Corpus: http://makina-corpus.com/blog/metier/2014/python-tutorial-understanding-python-mro-class-search-path
 
 Conventions de nommage
 ----------------------
@@ -473,6 +477,19 @@ personne de le faire.
 
 De même, les méthodes encadrées par des double-underscore (par exemple
 ``__init__``) sont des méthodes spéciales.
+
+Selon la :ref:`my-pep8`:
+
+===================== ========================== ============================
+Type                  Règles                     Exemples
+===================== ========================== ============================
+Modules               minuscule                  ``scoop``
+Classes               Majuscule À Chaque Mot     ``LectureFichier``
+Exceptions            \*Error                    ``LectureFichierError``
+Fonctions et Méthodes minuscules\_et\_underscore ``appel_fonction()``
+Constantes            MAJUSCULES                 ``FICHIER_DEFAUT``
+Variables d'instances minuscules\_et\_underscore ``fichier_alpha = Classe()``
+===================== ========================== ============================
 
 Setters/Getters
 ---------------
@@ -565,8 +582,10 @@ mettre en cache les sorties d'une fonction::
     print "fib :", fib(40)
     print "calls :", calls
 
-Le décorateur :py:func:`wraps` permet de faire passer le ``__doc__`` et le
-``__name__`` de la fonction décorée (fib) à la fonction décoratrice (_memorize).
+Le décorateur :py:func:`wraps <functools.wraps>` permet de faire passer le
+:py:attr:`__doc__ <func.__doc__>`, :py:attr:`__module__ <class.__module__>` et
+le :py:attr:`__name__ <class.__name__>` de la fonction décorée (``fib``) à la
+fonction décoratrice (``_memorize``).
 
 Des version sympa de décorateurs sont disponibles sur ce
 `wiki <https://wiki.python.org/moin/PythonDecoratorLibrary>`_:
@@ -602,26 +621,26 @@ Le constructeur d'une classe se fait en deux étapes.
 En définissant le __new__ on peut donc créer une classe en lui ajoutant des
 attributs et méthodes.
 
-.. warning:: Attention, une classe de ce type doit hériter de :py:obj:`type`.
+.. warning:: Pour créer une métaclasse, il faut la faire hériter de :py:obj:`type`.
 
-.. code-block:: python
+    .. code-block:: python
 
-    class MyClass(type):
-        def __new__(cls, name):
-            # ...
+        class MyClass(type):
+            def __new__(cls, name):
+                # ...
 
-.. todo Compléter l'exemple
-
-On peut également créer des métaclasse grâce à l'outils abc.
+On peut également créer des métaclasse grâce à l'outils :py:mod:`abc`.
 
 Le singleton
 ============
 
 Cet objet, qui est un objet qui ne peut être estancié qu'une seule fois.
-C'est dans la méthode __new__ que cela doit être fait.
+C'est dans la méthode :py:meth:`__new__() <object.__new__>` que cela doit être fait.
 
-Il existe un pattern de Singleton alternatif : le Borg. Il permet le partage
+Il existe un pattern de Singleton alternatif : le `Borg`_. Il permet le partage
 des états entre objets.
+
+.. _Borg: http://code.activestate.com/recipes/66531-singleton-we-dont-need-no-stinkin-singleton-the-bo/
 
 Context Manager
 ===============
@@ -656,6 +675,12 @@ Isolation de l'environnement python. On a cloné le binaire python, donc on ne
 suit pas les mises à jours faites par le système. La librairie standard est
 liée dynamiquement (symlink). On peut l'activer en faisant
 ``virtualenv <dossier>`` puis source ``<dossier>/bin/activate``.
+
+pew
+^^^
+
+`pew <https://github.com/berdario/pew>`_ permet de créer un shell complet avec
+l'environnement de virtualenv.
 
 setuptools
 ^^^^^^^^^^
@@ -699,12 +724,16 @@ Debug
 * ``c`` continue
 * ``n`` ligne suivante
 
-:pep:`8`
-========
+.. _my-pep8:
+
+:abbr:`PEP (Python Enhancement Proposals)` 8
+============================================
+
+La :pep:`8` définit tout un ensemble de rêgles non-contraignantes de codages,
+notamment les conventions de nommages et est un guide de mise en forme.
 
 Les commandes ``pep8`` et ``flake8`` permettent de vérifier si la mise en
-forme du code source est conforme aux standards de codage python, la :pep:8
-et sont installables via pip.
+forme du code source est conforme à cette PEP, et sont installables via pip.
 
 Tests unitaires
 ===============
