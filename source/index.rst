@@ -105,7 +105,14 @@ nouvel emplacement mémoire si on tente de le modifier. C'est le cas des types
 
 Un objet **muable** garde son emplacement mémoire lorsqu'il est modifié. C'est
 le cas notemment des séquences (:py:obj:`list`, :py:obj:`dict`, :py:obj:`set`,
-etc.) sauf les :py:obj:`tuple` et :py:obj:`frozenset`.
+etc., sauf :py:obj:`tuple` et :py:obj:`frozenset`)::
+
+    >>> a = [1, 2, 3, 4]
+    >>> id(a)
+    38120480
+    >>> a.append(5)
+    >>> id(a)
+    38120480
 
 C'est aussi le cas des objets créés par le développeur.
 
