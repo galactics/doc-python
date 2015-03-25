@@ -315,7 +315,78 @@ Voir :ref:`typeiter`.
 Générateurs
 -----------
 
-Voir :ref:`generator-types`.
+générateurs simples
+^^^^^^^^^^^^^^^^^^^
+
+À la place de créer la liste et de la charger complètement en mémoire, on peut
+utiliser les générateurs, qui vont ne renvoyer que l'élément nécessaire au
+moment opportun.
+
+Par exemple::
+
+    >>> # va charger un tableau de 2000 entrées en mémoire
+    >>> a = [sum(range(x)) for x in range(0, 10, 2)]
+    >>> for i in a:
+    ...     print(i)
+    ... 
+    0
+    1
+    6
+    15
+    28
+    >>> # On peut réutiliser la liste autant de fois qu'on veut
+
+En remplaçant le ``[]`` par ``()`` on va transformer la liste en générateur.
+Celui-ci ne contiendra pas la totalité des éléments, mais *générera* ceux-ci
+à chaque itération::
+
+    >>> # va créer un générateur
+    >>> b = (sum(range(x)) for x in range(0, 10, 2))
+    >>> print(b)
+    <generator object <genexpr> at 0x1be03c0>
+    >>> for i in b:
+    ...     print(i)
+    ...
+    0
+    1
+    6
+    15
+    28
+    >>> for i in b:  # ceci n'affiche rien
+    ...     print(i)
+    ...
+
+:keyword:`yield`
+^^^^^^^^^^^^^^^^
+
+Le mot clé :keyword:`yield` est à utiliser à la place de :keyword:`return`.
+La fonction est ainsi transformée en générateur et son code n'est **pas
+éxécuté** au moment de l'appel.
+
+L'éxécution du code contenu dans le générateur n'est éxécuté que lors d'une
+itération. À chaque itération, le générateur va s'arréter au mot-clé
+:keyword:`yield` en retourner la valeur. À l'itération suivante, le générateur
+va redémarrer à l'endroit où il s'était arrété.
+
+.. code-block:: python
+
+    >>> def creer_generateur():
+    ...     for i in range(25):
+    ...         yield i*i
+    ...
+    >>> gene = cree_generateur()  # pas d'éxécution de code
+    >>> print(gene)
+    <generator object <genexpr> at 0x1be25c0>
+    >>> for i in gene:
+    ...     print(i)
+    ...
+    0
+    1
+    4
+    9
+    16
+
+Voir :ref:`generator-types` et l'article de `Sam&Max <http://sametmax.com/comment-utiliser-yield-et-les-generateurs-en-python/>`_
 
 Chaines de caractères
 =====================
