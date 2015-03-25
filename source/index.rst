@@ -1,7 +1,4 @@
-.. doc documentation master file, created by
-   sphinx-quickstart on Thu Jan 29 08:09:33 2015.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+:tocdepth: 3
 
 ####################
 Documentation Python
@@ -17,6 +14,37 @@ L'initialisation de cette page est tirée des notes personnelle prises durant
 le cours **Python Avancé** reçu en décembre 2014 et donné par
 `Jean-Philippe Camguilhem <https://github.com/jpcw>`_ de
 `Makina-Corpus <http://makina-corpus.com/>`_.
+
+:abbr:`PEP (Python Enhancement Proposals)` 8
+============================================
+
+La :pep:`8` définit tout un ensemble de rêgles non-contraignantes de codages,
+notamment les conventions de nommages et est un guide de mise en forme.
+
+Les commandes ``pep8`` et ``flake8`` permettent de vérifier si la mise en
+forme du code source est conforme à cette PEP, et sont installables via
+:ref:`my pip`.
+
+Une méthode ou variable préfixée d'un underscore ``_`` n'a, par covention,
+pas vocation à être utilisée à l'extérieur de la classe. Cependant, comme il
+n'y a pas de notion de visibilité d'attributs et de méthodes, on n'empèche
+personne de le faire.
+
+De même, les méthodes encadrées par des double-underscore (par exemple
+``__init__``) sont des méthodes spéciales.
+
+Selon la :pep:`8`:
+
+===================== ========================== ============================
+Type                  Règles                     Exemples
+===================== ========================== ============================
+Modules               minuscule                  ``scoop``
+Classes               Majuscule À Chaque Mot     ``LectureFichier``
+Exceptions            \*Error                    ``LectureFichierError``
+Fonctions et Méthodes minuscules\_et\_underscore ``appel_fonction()``
+Constantes            MAJUSCULES                 ``FICHIER_DEFAUT``
+Variables d'instances minuscules\_et\_underscore ``fichier_alpha = Classe()``
+===================== ========================== ============================
 
 sys.path
 ========
@@ -142,10 +170,23 @@ et aussi :py:mod:`itertools`.
 
 Le tuple est immuable.
 
+.. warning:: ``(1)`` n'est pas un tuple, à la différence de ``(1,)``
+
+    .. code-block:: python
+
+        >>> a = (1)    # raté !
+        >>> type(a)
+        <type 'int'>
+ 
+        >>> a = (1, )  # gagné !
+        >>> type(a)
+        <type 'tuple'>
+
+
 :py:obj:`dict`
 --------------
 
-Tableau associatif, dont la clé peut être nimporte quelle valeur immuable
+Tableau associatif, dont la clé peut être n'importe quelle valeur immuable
 (str, int, tuple, etc.).
 
 La méthode :py:meth:`dict.items` retourne la liste complète des couples
@@ -173,6 +214,69 @@ si la clé n'existe pas.
     >>> fruits
     ['cerises', 'mangues']
 
+:py:obj:`str`
+-------------
+
+Méthodes utiles
+^^^^^^^^^^^^^^^
+
+    * :py:meth:`str.replace` et :py:meth:`str.translate`
+    * :py:meth:`str.split` et :py:meth:`str.partition`
+    * :py:meth:`str.strip`, :py:meth:`str.rstrip` et :py:meth:`str.lstrip`
+    * :py:meth:`str.startswith` et :py:meth:`str.endswith`
+
+Formatage
+^^^^^^^^^
+
+.. code-block:: python
+
+    >>> # MAAAAAAL, on crée 6 objets string différents
+    >>> text = 'text ' + str(1) + ' another text ' + str(2) + ' fini'
+
+    >>> # Bien !
+    >>> text = 'text %d another text %d fini' % (1, 2)
+    >>> text = 'text {0} another text {1} fini'.format(1, 2)
+    >>> text = 'text {premier} another text {second} fini'.format(premier=1, second=2)
+
+La concatenation de chaines de caractères est beaucoup plus rapide en passant
+par string.join() que par concaténation directe (+). Il faut donc le préférer
+pour de grands ensembles de données.
+
+Les méthodes de formatage :py:meth:`str.upper`, :py:meth:`str.lower`,
+:py:meth:`str.title` et :py:meth:`str.capitalize` permettent de gérer la case.
+
+Les remplacements sont plus efficaces avec :py:func:`string.translate` que par
+:py:func:`string.replace` pour les caractères.
+
+Encoding
+^^^^^^^^
+
+Par défaut python2 est en ASCII et python3 en unicode. Par contre dans un
+termial, python détecte l'encoding du tty et accèpte donc son encodage
+(ex : utf-8).
+
+.. note:: Il y a une différence entre la représentation **unicode** et
+   l'encoding **utf-8**.
+
+Python peut convertir de charset/codepage/encoding vers unicode grâce à la
+commande :py:meth:`str.decode` et l'inverse via :py:meth:`str.encode`.
+
+La bonne méthode est :
+    #. Récupération (fichiers, args, user input, etc.),
+    #. convertir vers unicode avec ``decode()``,
+    #. faire les opérations en unicode,
+    #. puis faire ``encode()`` au dernier moment (avant :py:func:`print` ou
+       :py:meth:`file.write`)
+
+.. warning:: DANGER !!
+
+    .. code-block:: python
+
+        >>> 'héhé'.isalpha()
+        False
+        >>> u'héhé'.isalpha()
+        True
+
 List comprehension
 ------------------
 
@@ -188,6 +292,10 @@ exemple
 
 Ce type d'opération fonctionne avec toutes les séquences (list, tuple, dict,
 etc.) et est très efficace d'un point de vue CPU.
+
+Attention cependant à ne pas utiliser les parenthèses ``()`` à la place des
+crochets. Celles-ci servent à la création des :ref:`générateurs <generateurs>`.
+Il convient d'utiliser le constructeur classique :py:func:`tuple`.
 
 unpacking
 ---------
@@ -388,27 +496,24 @@ va redémarrer à l'endroit où il s'était arrété.
 
 Voir :ref:`generator-types` et l'article de `Sam&Max <http://sametmax.com/comment-utiliser-yield-et-les-generateurs-en-python/>`_
 
-Chaines de caractères
-=====================
+Fichiers
+========
 
-Formatage
----------
+Path
+----
 
-.. code-block:: python
+Il ne faut jamais concatener soi-même les path, car :py:mod:`os.path` c'est la
+vie !
 
-    >>> # MAAAAAAL, on crée 6 objets string différents
-    >>> text = 'text ' + str(1) + ' another text ' + str(2) + ' fini'
+Dans la stdlib de python 3.4 (et PyPy) :py:mod:`path` est super cool et permet
+de faire un objet Path, sur lequel on peut faire un join(), rename(), move(),
+chown(), etc.
 
-    >>> # Bien !
-    >>> text = 'text %d another text %d fini' % (1, 2)
-    >>> text = 'text {0} another text {1} fini'.format(1, 2)
-    >>> text = 'text {premier} another text {second} fini'.format(premier=1, second=2)
+Lecture/Écriture
+----------------
 
-La concatenation de chaines de caractères est beaucoup plus rapide en passant
-par string.join() que par concaténation directe (+). Il faut donc le préférer
-pour de grands ensembles de données.
-
-Pour la lecture de fichiers, préférer splitline
+Pour la lecture de fichiers, préférer :py:meth:`str.splitlines` à
+:py:meth:`file.readlines`.
 
 .. code-block:: python
 
@@ -425,52 +530,18 @@ et éviter d'avoir à faire de decode.
     En python 3,  la fonction open se comporte comme :py:func:`codecs.open`
     avec l'encoding 'utf-8' par défaut.
 
-Les remplacements sont plus efficaces avec :py:func:`string.translate` que par
-:py:func:`string.replace` pour les caractères.
 
-Encoding
---------
+Fichiers temporaires
+--------------------
 
-Une chaine de caractère (:py:obj:`str`) est une séquence d'octets.
-Par défaut python2 est en ASCII. Par contre dans un termial, python détecte
-l'encoding du tty et accèpte donc son encodage (ex : utf-8).
+Pour la création de fichiers temporaires :py:mod:`tempfile`. Supprime le
+fichier dès l'appel de ``file.close()``.
 
-.. note:: Il y a une différence entre la représentation **unicode** et
-   l'encoding **utf-8**.
-
-Python peut convertir de charset/codepage/encoding vers unicode grâce à la
-commande :py:meth:`string.decode` et l'inverse via :py:meth:`string.encode`.
-
-La bonne méthode est :
-    #. tout récupérer,
-    #. décoder vers unicode avec decode(),
-    #. faire les opérations en unicode,
-    #. puis faire encode() au dernier moment (avant :py:func:`print` ou
-       :py:meth:`file.write`)
-
-.. warning:: DANGER !!
-
-    .. code-block:: python
-
-        >>> 'héhé'.isalpha()
-        False
-        >>> u'héhé'.isalpha()
-        True
-
-Path
-====
-
-Il ne faut jamais concatener soi-même les path, car :py:mod:`os.path` c'est la
-vie !
-
-Dans la stdlib de python 3.4 (et PyPy) :py:mod:`path` est super cool et permet
-de faire un objet Path, sur lequel on peut faire un join(), rename(), move(),
-chown(), etc.
-
-Pour la création de fichiers temporaires :py:mod:`tempfile`.
+Algorithmique
+=============
 
 Scope
-=====
+-----
 
 Une variable est accessible depuis n'importe quel sous-scope en lecture, mais
 pas en écriture.
@@ -497,23 +568,78 @@ Pour pouvoir la modifier dans un sous-scope, il faut la décraler comme
         # parce que global CAYMAL
         return variable
 
+En python 3 on peut utiliser :keyword:`nonlocal` qui permet d'accéder au scope
+directement au-dessus.
+
 Fonctions
-=========
+---------
 
 La valeur par défaut d'un argument d'une fonction n'est évalué qu'une fois
 lors de la déclaration. Ainsi si elle fait référence à un objet qui n'existe
 pas encore, il y aura erreur.
 
-Boucles
-=======
+Décorateurs
+-----------
 
-On peut utiliser la méthode :keyword:`for-else <for>`. Le code contenu dans
-``else`` ne sera exécuté que dans le cas ou for n'est pas interrompu ou breaké.
+On peut créer ses propres décorateurs, de manière à ajouter une
+fonctionnalitée particulière. Par exemple, le décorateur suivant permet de
+mettre en cache les sorties d'une fonction::
+
+    #!/usr/bin/env python
+    # -*- coding: utf-8 -*-
+
+    from functools import wraps
+
+    def memorize(func):
+        memo = {}
+        @wraps(func)
+        def memorized_func(x):
+            if x not in memo:
+                memo[x] = func(x)
+            return memo[x]
+
+        return memorized_func
+
+    calls = 0
+
+    @memorize
+    def fib(n):
+        global callé
+        calls += 1
+
+        if n == 0:
+            return 0
+        elif n == 1:
+            return 1
+        else:
+            return fib(n-1) + fib(n-2)
+
+    print "fib :", fib(40)
+    print "calls :", calls
+
+Le décorateur :py:func:`wraps <functools.wraps>` permet de faire passer le
+:py:attr:`__doc__ <func.__doc__>`, :py:attr:`__module__ <class.__module__>` et
+le :py:attr:`__name__ <class.__name__>` de la fonction décorée (``fib``) à la
+fonction décoratrice (``_memorize``).
+
+Des version sympa de décorateurs sont disponibles sur ce
+`wiki <https://wiki.python.org/moin/PythonDecoratorLibrary>`_:
+
+    * deprecated
+    * timing
+    * retry
+
+Boucles
+-------
+
+En plus de la syntaxe classique ``for x in ...`` peut utiliser la méthode
+:keyword:`for-else <for>`. Le code contenu dans ``else`` ne sera exécuté que
+dans le cas ou for n'est pas interrompu ou breaké.
 
 Le même principe est applicable à :keyword:`while-else <while>`.
 
 Exceptions
-==========
+----------
 
 .. code-block:: python
 
@@ -544,30 +670,6 @@ Quoi qu'il arrive, hériter de :py:obj:`object`. On bénéficie alors du
 l'héritage multiple. Cf. le `tuto de Makina Corpus`_.
 
 .. _tuto de Makina Corpus: http://makina-corpus.com/blog/metier/2014/python-tutorial-understanding-python-mro-class-search-path
-
-Conventions de nommage
-----------------------
-
-Une méthode ou variable préfixée d'un underscore ``_`` n'a, par covention,
-pas vocation à être utilisée à l'extérieur de la classe. Cependant, comme il
-n'y a pas de notion de visibilité d'attributs et de méthodes, on n'empèche
-personne de le faire.
-
-De même, les méthodes encadrées par des double-underscore (par exemple
-``__init__``) sont des méthodes spéciales.
-
-Selon la :ref:`my-pep8`:
-
-===================== ========================== ============================
-Type                  Règles                     Exemples
-===================== ========================== ============================
-Modules               minuscule                  ``scoop``
-Classes               Majuscule À Chaque Mot     ``LectureFichier``
-Exceptions            \*Error                    ``LectureFichierError``
-Fonctions et Méthodes minuscules\_et\_underscore ``appel_fonction()``
-Constantes            MAJUSCULES                 ``FICHIER_DEFAUT``
-Variables d'instances minuscules\_et\_underscore ``fichier_alpha = Classe()``
-===================== ========================== ============================
 
 Setters/Getters
 ---------------
@@ -621,72 +723,25 @@ Dans l'exemple d'avant la classe ``Parrot`` devient::
         def voltage(self):
             raise Exception("Impossible de supprimer cet élément")
 
-decorateurs
------------
+Attributs spéciaux
+------------------
 
-On peut créer ses propres décorateurs, de manière à ajouter une
-fonctionnalitée particulière. Par exemple, le décorateur suivant permet de
-mettre en cache les sorties d'une fonction::
-
-    #!/usr/bin/env python
-    # -*- coding: utf-8 -*-
-
-    from functools import wraps
-
-    def memorize(func):
-        memo = {}
-        @wraps(func)
-        def memorized_func(x):
-            if x not in memo:
-                memo[x] = func(x)
-            return memo[x]
-
-        return memorized_func
-
-    calls = 0
-
-    @memorize
-    def fib(n):
-        global calls
-        calls += 1
-
-        if n == 0:
-            return 0
-        elif n == 1:
-            return 1
-        else:
-            return fib(n-1) + fib(n-2)
-
-    print "fib :", fib(40)
-    print "calls :", calls
-
-Le décorateur :py:func:`wraps <functools.wraps>` permet de faire passer le
-:py:attr:`__doc__ <func.__doc__>`, :py:attr:`__module__ <class.__module__>` et
-le :py:attr:`__name__ <class.__name__>` de la fonction décorée (``fib``) à la
-fonction décoratrice (``_memorize``).
-
-Des version sympa de décorateurs sont disponibles sur ce
-`wiki <https://wiki.python.org/moin/PythonDecoratorLibrary>`_:
-
-    * deprecated
-    * timing
-    * retry
-
-Autre
------
-
++-------------------+---------------------------------------------------------------------------------------------------+
+| Attribut          | Description                                                                                       |
++===================+===================================================================================================+
+| ``__call__``      | Rend l'objet appellable                                                                           |
++-------------------+---------------------------------------------------------------------------------------------------+
+| ``__dict__``      | Dictionnaire contenant tous les constantes, attributs et méthodes de l'objet/la classe            |
 +-------------------+---------------------------------------------------------------------------------------------------+
 | ``__slots__``     | Pour la linéarisation d'objets, on sélectionne les attributs qui seront conservés en mémoire      |
 |                   | (à la manière de __all__ pour les modules)                                                        |
-+-------------------+---------------------------------------------------------------------------------------------------+
-| ``__call__``      | Rend l'objet appellable                                                                           |
 +-------------------+---------------------------------------------------------------------------------------------------+
 | ``__[a-Z0-9]+_?`` | Les attributs préfixés de 2 « _ » et d'un « _ » au plus en suffixe sont des attributs spéciaux.   |
 |                   | Ils n'est pas possible de les overrider dans les classes filles.                                  |
 +-------------------+---------------------------------------------------------------------------------------------------+
 
 Métaclasses
-===========
+-----------
 
 Fabriquer des classes à la volée, équivalent des :keyword:`lambda` mais pour
 les classes.
@@ -709,14 +764,14 @@ attributs et méthodes.
 
 On peut également créer des métaclasse grâce à l'outils :py:mod:`abc`.
 
-Le singleton
-============
+Singleton
+---------
 
 Cet objet, qui est un objet qui ne peut être estancié qu'une seule fois.
 C'est dans la méthode :py:meth:`__new__() <object.__new__>` que cela doit être fait.
 
 Il existe un pattern de Singleton alternatif : le `Borg`_. Il permet le partage
-des états entre objets.
+des états entre objets et non de l'instance.
 
 .. _Borg: http://code.activestate.com/recipes/66531-singleton-we-dont-need-no-stinkin-singleton-the-bo/
 
@@ -743,8 +798,16 @@ Modules
 doit contenir au moins 1 caractère pour d'obscures raisons de suppression de
 fichiers vides par windows lors des zip/unzip.
 
+Si on souhaite créer un module vide, qui n'a vocation qu'à contenir d'autres
+modules, il faut créer un fichier ``__init__.py`` contenant::
+
+    __import__("pkg_resources").declare_namespace(__name__)
+
 Outils
-------
+======
+
+Développement
+-------------
 
 virtualenv
 ^^^^^^^^^^
@@ -760,6 +823,9 @@ pew
 `pew <https://github.com/berdario/pew>`_ permet de créer un shell complet avec
 l'environnement de virtualenv.
 
+Déploiement
+-----------
+
 setuptools
 ^^^^^^^^^^
 
@@ -769,10 +835,17 @@ setuptools
 
 permet de faire un lien symbolique vers la librairie en cours de développement.
 
+.. _my pip:
+
 pip
 ^^^
 
-Gère (mal) les dépedances des paquets.
+Utilitaire officiel de gestion des packets via le site PyPi_.
+
+Attention à la gestion des versions des dépendances, qui peuvent rentrer en
+conflit les unes par rapport aux autres.
+
+.. _Pypi: https://pypi.python.org/pypi
 
 buildout
 ^^^^^^^^
@@ -791,7 +864,7 @@ Fonctionne sur le modèle des recipes
 Lu ici-et-là qu'il est quand même assez lourd et difficilement configurable.
 
 Debug
-=====
+-----
 
 .. code-block:: python
 
@@ -802,22 +875,11 @@ Debug
 * ``c`` continue
 * ``n`` ligne suivante
 
-.. _my-pep8:
-
-:abbr:`PEP (Python Enhancement Proposals)` 8
-============================================
-
-La :pep:`8` définit tout un ensemble de rêgles non-contraignantes de codages,
-notamment les conventions de nommages et est un guide de mise en forme.
-
-Les commandes ``pep8`` et ``flake8`` permettent de vérifier si la mise en
-forme du code source est conforme à cette PEP, et sont installables via pip.
-
 Tests unitaires
-===============
+---------------
 
 doctest
--------
+^^^^^^^
 
 .. code-block:: python
 
@@ -850,7 +912,7 @@ la docstring.
 Cf. `Sam\&Max <http://sametmax.com/un-gros-guide-bien-gras-sur-les-tests-unitaires-en-python-partie-4/>`__
 
 unitttest
----------
+^^^^^^^^^
 
 .. code-block:: python
 
@@ -871,7 +933,7 @@ unitttest
 Cf. `Sam\&Max <http://sametmax.com/un-gros-guide-bien-gras-sur-les-tests-unitaires-en-python-partie-2/>`__
 
 nosetest
---------
+^^^^^^^^
 
 .. code-block:: shell
 
@@ -885,7 +947,7 @@ la couverture de ceux-ci.
     nosetests --with-doctest --with-coverage -v myProject/
 
 py.test
--------
+^^^^^^^
 
 Très puissant outil de tests, mais fait un peu trop de trucs ésotériques au
 niveau des imports. Comme nosetest, il permet de lancer des tests issus
@@ -908,13 +970,13 @@ Il y a aussi une foule d'options sympa:
     * tester aussi les doctest, unittest et nose
 
 tox
----
+^^^
 
 Si j'ai bien compris, c'est un outil d'automatisation des tests, mais il faut
 creuser/vérifier `ici <https://testrun.org/tox/latest/>`_.
 
 Documentation
-=============
+^^^^^^^^^^^^^
 
 `Sphinx <http://sphinx-doc.org/>`_ est la clé !
 
@@ -926,7 +988,7 @@ Documentation
     * ``automodule`` permet d'aller chercher les docstring d'un module.
 
 Profiling
-=========
+^^^^^^^^^
 
 .. code-block:: shell
 
@@ -952,7 +1014,7 @@ qui fait du profiling ligne par ligne et fournit également le décorateur
 Par contre ce n'est pas super précis, parce que python n'a que des références.
 Ça ne correspond donc pas vraiment à ce qui est fait par python en mémoire.
 
-.. warning:: ça ne remplacera pas gdb pour la détection de fuites.
+.. note:: ça ne remplacera pas gdb pour la détection de fuites.
 
 Librairies sympas
 =================
@@ -981,7 +1043,7 @@ Librairies sympas
 | :py:mod:`multiprocessing`        | Faire des forks comme un fou                             | Utilisent la même API, |
 +----------------------------------+----------------------------------------------------------+ ils sont donc          +
 | :py:mod:`threading`              | À préférer à :py:mod:`thread`, mais peut être            | facilement             |
-|                                  | limité par le :term:`GIL <global interpreter lock>`.     | interchangeable        |
+|                                  | limité par le :term:`GIL <Global Interpreter Lock>`.     | interchangeable        |
 |                                  | Reste quand même super s'il y a beaucoup d'IO (fichiers, |                        |
 |                                  | RAM, etc.).                                              |                        |
 +----------------------------------+----------------------------------------------------------+------------------------+
