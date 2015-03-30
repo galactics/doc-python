@@ -1087,7 +1087,7 @@ Librairies sympas
 
 Sinon il y a la super liste de
 `Sam\&Max <http://sametmax.com/tres-grand-listing-des-libs-tierce-partie-les-plus-utiles-en-python/>`__.
-Ils essayent de la mettreà jour régulièrement.
+Ils essayent de la mettre à jour régulièrement.
 
 .. _mal:
 
