@@ -155,6 +155,8 @@ Voir :ref:`cette documentation <typesseq>` pour plus de détails.
 Fonctions et lib utiles
 -----------------------
 
+Dans la stdlib:
+
     * :py:func:`enumerate`
     * :py:func:`any`, :py:func:`filter` et :py:func:`map`
     * :py:func:`len`
@@ -163,7 +165,13 @@ Fonctions et lib utiles
     * :py:func:`reversed` et :py:func:`sorted`
     * :py:func:`zip`
 
-et aussi :py:mod:`itertools`.
+et aussi :py:mod:`itertools` qui recueille quelques fonctions parfois bien
+utiles:
+
+    * :py:func:`ifilter() <itertools.ifilter>` et
+      :py:func:`imap() <itertools.imap>`
+    * :py:func:`permutations() <itertools.permutations>`
+    * :py:func:`combinations() <itertools.combinations>`
 
 :py:obj:`tuple`
 ---------------
