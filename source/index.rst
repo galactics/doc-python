@@ -25,6 +25,10 @@ Les commandes ``pep8`` et ``flake8`` permettent de vérifier si la mise en
 forme du code source est conforme à cette PEP, et sont installables via
 :ref:`my pip`.
 
+On peut également installe `pep8-naming <https://pypi.python.org/pypi/pep8-naming>`_
+qui va permettre de mettre le code en conformité vis à vis des conventions
+de nommage.
+
 Une méthode ou variable préfixée d'un underscore ``_`` n'a, par covention,
 pas vocation à être utilisée à l'extérieur de la classe. Cependant, comme il
 n'y a pas de notion de visibilité d'attributs et de méthodes, on n'empèche
