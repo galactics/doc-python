@@ -686,11 +686,23 @@ l'héritage multiple. Cf. le `tuto de Makina Corpus`_.
 Setters/Getters
 ---------------
 
+via des méthodes génériques
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Les setters et getters sont implicites en python, on peut cependant les créer
 pour permettre une validation des entrées/sorties.
 
-@property
-^^^^^^^^^
+Les méthodes :py:meth:`object.__getattr__`, :py:meth:`object.__setattr__` et
+:py:obj:`objects.__delattr__` sont là pour intéragir avec des attributs
+existants ou non.
+
+Pour les objets héritants de :py:obj:`object`, on a également accès à la
+méthode :py:meth:`object.__getattribute__`.
+
+via @property
+^^^^^^^^^^^^^
+
+On peut également passer par les décorateurs :py:class:`property`.
 
 Transforme une méthode en attribut (read-only)::
 
@@ -713,10 +725,8 @@ Transforme une méthode en attribut (read-only)::
     >>> parrot.voltage
     40
 
-@x.setter & x.deleter
-^^^^^^^^^^^^^^^^^^^^^
-
-Dans l'exemple d'avant la classe ``Parrot`` devient::
+Si on veut mettre en place des setter et deleter, la classe
+``Parrot`` devient::
 
     class Parrot(object):
 
