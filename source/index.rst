@@ -1092,6 +1092,8 @@ Librairies sympas
 +----------------------------------+-----------------------------------------------------------------------------------+
 | :py:mod:`csv`                    | Parsing de fichiers CSV                                                           |
 +----------------------------------+-----------------------------------------------------------------------------------+
+| `docopt`_                        | Alternative à :py:mod:`argparse`, fait tout à partir d'une chaine d'usage         |
++----------------------------------+-----------------------------------------------------------------------------------+
 | `Fabric`_                        | Ssh, pour faire du déploiement par exemple, basé sur paramiko                     |
 +----------------------------------+-----------------------------------------------------------------------------------+
 | `Hachoir`_                       | Lecture de fichiers, métadonnées, réparations de binaires dégradés                |
@@ -1109,13 +1111,15 @@ Librairies sympas
 +----------------------------------+----------------------------------------------------------+------------------------+
 | `Paramiko`_                      | ssh                                                                               |
 +----------------------------------+-----------------------------------------------------------------------------------+
+| `peewee`_                        | client ORM très léger pour sqlite, MySQL & PostgreSQL                             |
++----------------------------------+-----------------------------------------------------------------------------------+
 | :py:mod:`pickle`                 | Sérialisation d'objets                                                            |
 +----------------------------------+-----------------------------------------------------------------------------------+
 | `PIL`_                           | Python Imaging Library (``pip install pillow`` ou ``pilotk``)                     |
 +----------------------------------+-----------------------------------------------------------------------------------+
-| :py:mod:`Queue`                  | Gestion de queues (FIFO, LIFO, etc...). voir :py:mod:`queue` en python 3.         |
+| :py:mod:`queue`                  | Gestion de queues (FIFO, LIFO, etc...). voir :py:mod:`Queue` en python 2.         |
 +----------------------------------+-----------------------------------------------------------------------------------+
-| :py:mod:`requests`               | Alternative plus haut niveau à :py:mod:`urllib`                                   |
+| `requests`_                      | Alternative plus haut niveau à :py:mod:`urllib`                                   |
 +----------------------------------+-----------------------------------------------------------------------------------+
 | `Scapy`_                         | Manipulation de paquets réseaux                                                   |
 +----------------------------------+-----------------------------------------------------------------------------------+
@@ -1128,11 +1132,14 @@ Librairies sympas
 .. Liste des liens vers les différentes docs en ligne
 .. _Asyncio: https://www.python.org/dev/peps/pep-3156/
 .. _BeautifulSoup: http://www.crummy.com/software/BeautifulSoup/bs4/doc/
+.. _docopt: http://docopt.readthedocs.org/en/latest/
 .. _Fabric: http://docs.fabfile.org/en/1.10/
 .. _Hachoir: https://bitbucket.org/haypo/hachoir/wiki/Home
 .. _lxml: http://lxml.de/
 .. _Paramiko: https://github.com/paramiko/paramiko/
+.. _peewee: http://peewee.readthedocs.org/
 .. _PIL: http://pillow.readthedocs.org/
+.. _requests: docs.python-requests.org/en/latest/
 .. _Scapy: http://secdev.org/projects/scapy/
 .. _SQLAlchemy: http://www.sqlalchemy.org/
 .. _zodb: http://www.zodb.org/en/latest/
