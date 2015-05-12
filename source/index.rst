@@ -689,6 +689,37 @@ C'est très intéressant dans le cas de socket, connexions à des BDD, ouverture
 de fichierts, etc.
 Voir l'article de `Sam\&Max <http://sametmax.com/les-context-managers-et-le-mot-cle-with-en-python/>`__.
 
+Annotations
+-----------
+
+Depuis python 3.0 il est possible d'ajouter des annotations à une fonction ou
+méthode. Ces annotations n'ont aucun effet sur le code et son exécution.
+
+.. code-block:: python
+
+    def fonction(x: str, y: object) -> int:
+        # faire des trucs avec
+        return
+
+Ce n'est qu'à partir de python 3.5 qu'elles sont utilisées pour définir le
+type de variable.
+
+Ce typage statique de certaines portions permet, en plus de donner une
+indication directe des types attendus, de faire des optimisation mémoire par
+l'interpréteur. Quelques infos `ici <http://sametmax.com/point-rapide-sur-les-types-hints/>`_.
+
+Ce n'est pas incompatible avec des valeurs par défaut. Ça alourdit un peu la
+syntaxe.
+
+.. code-block:: python
+
+    from typing import Iterable
+
+    def fonction(x="hello": str, y=(1, 2): Iterable) -> int:
+        # des trucs...
+        return 4
+
+
 POO
 ===
 
