@@ -822,10 +822,10 @@ Le constructeur d'une classe se fait en deux étapes.
     #. Le __new__ s'occupe de créer la classe
     #. le __init__ s'occupe de créer de l'instance.
 
-En définissant le __new__ on peut donc créer une classe en lui ajoutant des
-attributs et méthodes.
+En définissant le :py:meth:`__new__() <object.__new__>` on peut donc créer une
+classe en lui ajoutant des attributs et méthodes.
 
-.. warning:: Pour créer une métaclasse, il faut la faire hériter de :py:obj:`type`.
+.. note:: Pour créer une métaclasse, il faut la faire hériter de :py:obj:`type`.
 
     .. code-block:: python
 
@@ -841,15 +841,49 @@ Singleton
 Cet objet ne peut être instancié qu'une seule fois.
 C'est dans la méthode :py:meth:`__new__() <object.__new__>` que cela doit être fait.
 
+.. code-block:: python
+
+    class MySingleton():
+
+        _instance = None
+
+        def __new__(cls, *args, **kwargs):
+
+            if cls._instance is None:
+                cls._instance = super(MySingleton, cls).__new__(cls, *args, **kwargs)
+
+            return cls._instance
+
+.. warning:: Le désavantage de cette méthode est qu'en cas d'héritage multiple
+    une classe fille peut surcharger __new__.
+
+    Pour contrer cet effet il faut passer par une métaclasse.
+
+.. code-block:: python
+
+    class MySingleton(type):
+
+        _instance = None
+
+        def __call__(cls, *args, **kwargs):
+
+            if cls._instances is None:
+                cls._instances = super(Singleton, cls).__call__(*args, **kwargs)
+
+            return cls._instances
+
+    #Python2
+    class MyClass(BaseClass):
+        __metaclass__ = MySingleton
+
+    #Python3
+    class MyClass(BaseClass, metaclass=MySingleton):
+        pass
+
 Il existe un pattern de Singleton alternatif : le `Borg`_. Il permet le partage
 des états entre objets et non de l'instance.
 
 .. _Borg: http://code.activestate.com/recipes/66531-singleton-we-dont-need-no-stinkin-singleton-the-bo/
-
-
-
-
-
 
 Modules
 =======
