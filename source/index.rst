@@ -595,7 +595,9 @@ Décorateurs
 
 On peut créer ses propres décorateurs, de manière à ajouter une
 fonctionnalitée particulière. Par exemple, le décorateur suivant permet de
-mettre en cache les sorties d'une fonction::
+mettre en cache les sorties d'une fonction.
+
+.. code-block:: python
 
     #!/usr/bin/env python
     # -*- coding: utf-8 -*-
@@ -670,6 +672,22 @@ Exceptions
     Traceback (most recent call last):
       File "<input>", line 2, in <module>
     ZeroDivisionError: integer division or modulo by zero
+
+Context Manager
+---------------
+
+:py:func:`contextlib.contextmanager`. Une utilisation régulière est
+
+.. code-block:: python
+
+    with open('file.txt') as f:
+        # on fait des trucs ici
+
+qui s'occupe de refermer le fichier automatiquement en fin d'utilisation.
+C'est un mix de décorateur et générateur.
+C'est très intéressant dans le cas de socket, connexions à des BDD, ouvertures
+de fichierts, etc.
+Voir l'article de `Sam\&Max <http://sametmax.com/les-context-managers-et-le-mot-cle-with-en-python/>`__.
 
 POO
 ===
@@ -789,7 +807,7 @@ On peut également créer des métaclasse grâce à l'outils :py:mod:`abc`.
 Singleton
 ---------
 
-Cet objet, qui est un objet qui ne peut être estancié qu'une seule fois.
+Cet objet ne peut être instancié qu'une seule fois.
 C'est dans la méthode :py:meth:`__new__() <object.__new__>` que cela doit être fait.
 
 Il existe un pattern de Singleton alternatif : le `Borg`_. Il permet le partage
@@ -797,21 +815,10 @@ des états entre objets et non de l'instance.
 
 .. _Borg: http://code.activestate.com/recipes/66531-singleton-we-dont-need-no-stinkin-singleton-the-bo/
 
-Context Manager
-===============
 
-:py:func:`contextlib.contextmanager`. Une utilisation régulière est
 
-.. code-block:: python
 
-    with open('file.txt') as f:
-        # on fait des trucs ici
 
-qui s'occupe de refermer le fichier automatiquement en fin d'utilisation.
-C'est un mix de décorateur et générateur.
-C'est très intéressant dans le cas de socket, connexions à des BDD, ouvertures
-de fichierts, etc.
-Voir l'article de `Sam\&Max <http://sametmax.com/les-context-managers-et-le-mot-cle-with-en-python/>`__.
 
 Modules
 =======
@@ -1050,7 +1057,7 @@ Librairies sympas
 | `Asyncio`_                       | Multi-threading (python3.4, mais existe en non-garanti sous python2,              |
 |                                  | sous le nom de trollus).                                                          |
 +----------------------------------+-----------------------------------------------------------------------------------+
-| `BeautifulSoup`_                 |  html et xml, même très mal formatté                                              |
+| `BeautifulSoup`_                 | html et xml, même très mal formatté                                               |
 +----------------------------------+-----------------------------------------------------------------------------------+
 | :py:mod:`csv`                    | Parsing de fichiers CSV                                                           |
 +----------------------------------+-----------------------------------------------------------------------------------+
@@ -1073,7 +1080,7 @@ Librairies sympas
 +----------------------------------+-----------------------------------------------------------------------------------+
 | :py:mod:`pickle`                 | Sérialisation d'objets                                                            |
 +----------------------------------+-----------------------------------------------------------------------------------+
-| `PIL`_                           | Python Imaging Library (pip install pillow ou pilotk)                             |
+| `PIL`_                           | Python Imaging Library (``pip install pillow`` ou ``pilotk``)                     |
 +----------------------------------+-----------------------------------------------------------------------------------+
 | :py:mod:`Queue`                  | Gestion de queues (FIFO, LIFO, etc...). voir :py:mod:`queue` en python 3.         |
 +----------------------------------+-----------------------------------------------------------------------------------+
