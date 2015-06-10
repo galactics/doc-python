@@ -29,7 +29,7 @@ On peut également installe `pep8-naming <https://pypi.python.org/pypi/pep8-nami
 qui va permettre de mettre le code en conformité vis à vis des conventions
 de nommage.
 
-Une méthode ou variable préfixée d'un underscore ``_`` n'a, par covention,
+Une méthode ou variable préfixée d'un underscore ``_`` n'a, par convention,
 pas vocation à être utilisée à l'extérieur de la classe. Cependant, comme il
 n'y a pas de notion de visibilité d'attributs et de méthodes, on n'empèche
 personne de le faire.
@@ -116,6 +116,9 @@ On peut obtenir le même comportement sur un objet en utilisant les méthodes
 :py:meth:`__nonzero__() <object.__nonzero__>` ou
 :py:meth:`__len__() <object.__len__>` (si
 :py:meth:`__nonzero__() <object.__nonzero__>` n'est pas défini).
+
+En python3 :py:meth:`__nonzero__` est remplacé par
+:py:meth:`__bool__() <object.__bool__>`
 
 Muable/Immuable
 ===============
@@ -257,8 +260,8 @@ pour de grands ensembles de données.
 Les méthodes de formatage :py:meth:`str.upper`, :py:meth:`str.lower`,
 :py:meth:`str.title` et :py:meth:`str.capitalize` permettent de gérer la case.
 
-Les remplacements sont plus efficaces avec :py:func:`string.translate` que par
-:py:func:`string.replace` pour les caractères.
+Les remplacements sont plus efficaces avec :py:meth:`str.translate` que par
+:py:meth:`str.replace` pour les caractères.
 
 Encoding
 ^^^^^^^^
@@ -307,7 +310,7 @@ etc.) et est très efficace d'un point de vue CPU.
 
 Attention cependant à ne pas utiliser les parenthèses ``()`` à la place des
 crochets. Celles-ci servent à la création des :ref:`générateurs <generateurs>`.
-Il convient d'utiliser le constructeur classique :py:func:`tuple`.
+Il convient d'utiliser le constructeur classique :py:class:`tuple`.
 
 unpacking
 ---------
@@ -648,7 +651,7 @@ Boucles
 
 En plus de la syntaxe classique ``for x in ...`` peut utiliser la méthode
 :keyword:`for-else <for>`. Le code contenu dans ``else`` ne sera exécuté que
-dans le cas ou for n'est pas interrompu ou breaké.
+dans le cas où ``for`` n'est pas interrompu ou breaké.
 
 Le même principe est applicable à :keyword:`while-else <while>`.
 
@@ -726,9 +729,11 @@ POO
 MRO
 ---
 
-Quoi qu'il arrive, hériter de :py:obj:`object`. On bénéficie alors du
-:abbr:`MRO (Method Resolution Order)`, qui permet de se débrouiller avec
-l'héritage multiple. Cf. le `tuto de Makina Corpus`_.
+Quoi qu'il arrive, en python2 il faut hériter de :py:obj:`object`. On
+bénéficie alors du :abbr:`MRO (Method Resolution Order)`, qui permet de se
+débrouiller avec l'héritage multiple. Cf. le `tuto de Makina Corpus`_.
+
+En python3 tous les objets héritent de :py:obj:`object` par défaut.
 
 .. _tuto de Makina Corpus: http://makina-corpus.com/blog/metier/2014/python-tutorial-understanding-python-mro-class-search-path
 
@@ -742,7 +747,7 @@ Les setters et getters sont implicites en python, on peut cependant les créer
 pour permettre une validation des entrées/sorties.
 
 Les méthodes :py:meth:`object.__getattr__`, :py:meth:`object.__setattr__` et
-:py:obj:`objects.__delattr__` sont là pour intéragir avec des attributs
+:py:obj:`object.__delattr__` sont là pour intéragir avec des attributs
 existants ou non.
 
 Pour les objets héritants de :py:obj:`object`, on a également accès à la
