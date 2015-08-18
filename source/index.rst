@@ -292,6 +292,13 @@ La bonne méthode est :
         >>> u'héhé'.isalpha()
         True
 
+En python 2 on peut forcer les objets :py:class:`str` a adopter le même
+comportement qu'en python 3 avec
+
+.. code-block:: python
+
+    from __future__ import unicode_literals
+
 List comprehension
 ------------------
 
