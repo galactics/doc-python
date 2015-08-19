@@ -192,7 +192,7 @@ Le tuple est immuable.
         >>> a = (1)    # raté !
         >>> type(a)
         <type 'int'>
- 
+
         >>> a = (1, )  # gagné !
         >>> type(a)
         <type 'tuple'>
@@ -458,7 +458,7 @@ Par exemple::
     >>> a = [sum(range(x)) for x in range(0, 10, 2)]
     >>> for i in a:
     ...     print(i)
-    ... 
+    ...
     0
     1
     6
@@ -806,6 +806,36 @@ Si on veut mettre en place des setter et deleter, la classe
         def voltage(self):
             raise Exception("Impossible de supprimer cet élément")
 
+Attributs privés
+----------------
+
+En python l'attribut privé est plus une convention qu'une règle. L'attribut
+privé d'instance se préfixe d'un underscore (``_spam``)
+
+On peut également créer des attributs privés de classe préfixés de deux
+underscore et suffixé d'un underscore ou moins (``__spam`` ou ``__spam_``).
+Ces attributs sont immédiatements renommés (``_ClassName__spam`` ou
+``_ClassName__spam_``).
+C'est ce qu'on appèle du :ref:`name mangling <tut-private>`
+
+.. code-block:: python
+
+    >>> class A(object):
+    ...     __bonjour = "Hello"
+    ...
+    >>> class B(A):
+    ...     __bonjour = "World"
+    ...
+    >>> print(B._A__bonjour)
+    Hello
+    >>> print(B._B__bonjour)
+    World
+    >>> print(B.__yo)  # L'attribut de base disparait
+    Traceback (most recent call last):
+        ...
+        B.__bonjour
+    AttributeError: type object 'B' has no attribute '__bonjour'
+
 Attributs spéciaux
 ------------------
 
@@ -822,6 +852,8 @@ Attributs spéciaux
 | ``__[a-Z0-9]+_?`` | Les attributs préfixés de 2 « _ » et d'un « _ » au plus en suffixe sont des attributs spéciaux.   |
 |                   | Ils n'est pas possible de les overrider dans les classes filles.                                  |
 +-------------------+---------------------------------------------------------------------------------------------------+
+
+D'autres attributs sont disponibles :ref:`ici <customization>`.
 
 Métaclasses
 -----------
