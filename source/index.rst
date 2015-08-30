@@ -106,6 +106,9 @@ retourne l'emplacement mémoire pointé par la variable::
     >>> a is b
     True
 
+Un peu plus d'infos sur `cette présentation <http://nedbatchelder.com/text/names1.html>`_
+au PyCon 2015.
+
 Conditions
 ==========
 
