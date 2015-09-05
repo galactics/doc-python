@@ -5,6 +5,7 @@ Documentation Python
 :Author: Jules DAVID
 :Generated: |today|
 :Version: |release|
+:Sources: `github <https://github.com/galactics/doc-python>`_
 
 
 Cette documentation couvre tous les petits trucs et astuces vus ici et là.
