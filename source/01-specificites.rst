@@ -139,3 +139,22 @@ etc., sauf :py:obj:`tuple` et :py:obj:`frozenset`)::
     38120480
 
 C'est aussi le cas des objets créés par le développeur.
+
+On peut reproduire l'immutabilité sur des objets en utilisant :py:attr:`object.__slots__`.
+
+.. code-block:: python
+
+    class Immutable(object):
+        """An immutable class
+        """
+        __slots__ = ["one", "two", "three"]
+
+        def __init__(self, one, two, three):
+            """Constructor"""
+            super(Immutable, self).__setattr__("one", one)
+            super(Immutable, self).__setattr__("two", two)
+            super(Immutable, self).__setattr__("three", three)
+
+        def __setattr__(self, name, value):
+            msg = "'{0}' has no attribute {1}".format(self.__class__, name)
+            raise AttributeError(msg)
