@@ -14,6 +14,8 @@ le cours **Python Avancé** reçu en décembre 2014 et donné par
 `Jean-Philippe Camguilhem <https://github.com/jpcw>`_ de
 `Makina-Corpus <http://makina-corpus.com/>`_.
 
+Sauf mention contraire, les exemples fournis sont compatibles python3.
+
 Plan
 ====
 

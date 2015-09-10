@@ -32,6 +32,10 @@ Librairies sympas
 +----------------------------------+-----------------------------------------------------------------------------------+
 | `docopt`_                        | Alternative à :py:mod:`argparse`, fait tout à partir d'une chaine d'usage         |
 +----------------------------------+-----------------------------------------------------------------------------------+
+| `begins`_                        | Autre alternative, permettant de simplement décorer une fonction pour en faire    |
+|                                  | la fonction principale du script et automatiquement créer les arguments de la     |
+|                                  | commande à partir des arguments de la fonction.                                   |
++----------------------------------+-----------------------------------------------------------------------------------+
 | `Fabric`_                        | Ssh, pour faire du déploiement par exemple, basé sur paramiko                     |
 +----------------------------------+-----------------------------------------------------------------------------------+
 | `Hachoir`_                       | Lecture de fichiers, métadonnées, réparations de binaires dégradés                |
@@ -70,6 +74,7 @@ Librairies sympas
 .. Liste des liens vers les différentes docs en ligne
 .. _Asyncio: https://www.python.org/dev/peps/pep-3156/
 .. _BeautifulSoup: http://www.crummy.com/software/BeautifulSoup/bs4/doc/
+.. _begins: https://pypi.python.org/pypi/begins
 .. _docopt: http://docopt.readthedocs.org/en/latest/
 .. _Fabric: http://docs.fabfile.org/en/1.10/
 .. _Hachoir: https://bitbucket.org/haypo/hachoir/wiki/Home

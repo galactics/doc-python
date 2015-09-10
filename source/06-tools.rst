@@ -65,6 +65,7 @@ Debug
 
     import pdb; pdb.set_trace()
 
+* ``h`` affiche l'aide
 * ``l`` affiche le contexte
 * ``a`` affiche les variables
 * ``c`` continue

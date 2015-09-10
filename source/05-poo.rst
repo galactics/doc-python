@@ -22,7 +22,7 @@ Les setters et getters sont implicites en python, on peut cependant les créer
 pour permettre une validation des entrées/sorties.
 
 Les méthodes :py:meth:`object.__getattr__`, :py:meth:`object.__setattr__` et
-:py:obj:`object.__delattr__` sont là pour intéragir avec des attributs
+:py:meth:`object.__delattr__` sont là pour intéragir avec des attributs
 existants ou non.
 
 Pour les objets héritants de :py:obj:`object`, on a également accès à la

@@ -7,9 +7,12 @@ Path
 Il ne faut jamais concatener soi-même les path, car :py:mod:`os.path` c'est la
 vie !
 
-Dans la stdlib de python 3.4 (et PyPy) :py:mod:`path` est super cool et permet
+Dans la stdlib de python 3.4 (et PyPy) :py:mod:`pathlib` est cool et permet
 de faire un objet Path, sur lequel on peut faire un join(), rename(), move(),
 chown(), etc.
+
+La lib tierce `path.py <https://github.com/jaraco/path.py>`_ offre un peu plus de
+fonctionnalités.
 
 Lecture/Écriture
 ----------------

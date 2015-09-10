@@ -121,7 +121,7 @@ termial, python détecte l'encoding du tty et accèpte donc son encodage
    l'encoding **utf-8**.
 
 Python peut convertir de charset/codepage/encoding vers unicode grâce à la
-commande :py:meth:`str.decode` et l'inverse via :py:meth:`str.encode`.
+commande :py:meth:`bytes.decode` et l'inverse via :py:meth:`str.encode`.
 
 La bonne méthode est :
     #. Récupération (fichiers, args, user input, etc.),
@@ -130,7 +130,7 @@ La bonne méthode est :
     #. puis faire ``encode()`` au dernier moment (avant :py:func:`print` ou
        :py:meth:`file.write`)
 
-.. warning:: DANGER !!
+.. warning:: En python 2
 
     .. code-block:: python
 
@@ -285,7 +285,7 @@ types (:py:obj:`collections.namedtuple`, :py:obj:`collections.OrderedDict`, etc.
 Itérateurs
 ----------
 
-Voir :ref:`typeiter`.
+Voir :ref:`typeiter` et `Iterable vs. Iterators vs Generators <http://nvie.com/posts/iterators-vs-generators/>`_
 
 .. _generateurs:
 
