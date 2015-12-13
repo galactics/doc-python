@@ -172,7 +172,7 @@ Si j'ai bien compris, c'est un outil d'automatisation des tests, mais il faut
 creuser/vérifier `ici <https://testrun.org/tox/latest/>`_.
 
 Documentation
-^^^^^^^^^^^^^
+-------------
 
 `Sphinx <http://sphinx-doc.org/>`_ est la clé !
 
@@ -184,7 +184,7 @@ Documentation
     * ``automodule`` permet d'aller chercher les docstring d'un module.
 
 Profiling
-^^^^^^^^^
+---------
 
 .. code-block:: shell
 
