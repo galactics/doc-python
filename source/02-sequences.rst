@@ -123,12 +123,14 @@ termial, python détecte l'encoding du tty et accèpte donc son encodage
 Python peut convertir de charset/codepage/encoding vers unicode grâce à la
 commande :py:meth:`bytes.decode` et l'inverse via :py:meth:`str.encode`.
 
-La bonne méthode est :
+La bonne méthode est:
     #. Récupération (fichiers, args, user input, etc.),
     #. convertir vers unicode avec ``decode()``,
     #. faire les opérations en unicode,
     #. puis faire ``encode()`` au dernier moment (avant :py:func:`print` ou
        :py:meth:`file.write`)
+
+via `Sam et Max <http://sametmax.com/lencoding-en-python-une-bonne-fois-pour-toute/>`_
 
 .. warning:: En python 2
 
