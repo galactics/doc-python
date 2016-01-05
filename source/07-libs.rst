@@ -1,17 +1,40 @@
 Librairies
 ##########
 
-Création d'un Module
-====================
+Package et Module
+=================
+
+Le sujet de la création de package est module est le sujet d'un tuto
+`ici <http://www.dabeaz.com/modulepackage/ModulePackage.pdf>`_
+
+Package
+-------
 
 À chaque niveau d'arborescence, il faut mettre un fichier ``__init__.py``. Il
 doit contenir au moins 1 caractère pour d'obscures raisons de suppression de
 fichiers vides par windows lors des zip/unzip.
 
-Si on souhaite créer un module vide, qui n'a vocation qu'à contenir d'autres
-modules, il faut créer un fichier ``__init__.py`` contenant::
+Si on souhaite créer un packages vide, qui n'a vocation qu'à contenir d'autres
+packages, il faut créer un fichier ``__init__.py`` contenant::
 
     __import__("pkg_resources").declare_namespace(__name__)
+
+Pour les packages contenant des modules, on peut faire ça::
+
+	# __init__.py
+	from .foo import *
+	from .bar import *
+	__all__ = (foo.__all__ + bar.__all__)
+
+Dans les cas de gros packages, ils peuvent néanmoins avoir un effet important
+sur les performances.
+
+Les Namespace packages sont une idée sympa pour permettre à d'autres développeurs de faire des extensions de sa librairie (CF tuto p. 105).
+
+Module
+------
+
+Un module est un fichier `.py`.
 
 
 Librairies sympas
