@@ -126,7 +126,7 @@ D'autres attributs sont disponibles :ref:`ici <customization>`.
 Métaclasses
 -----------
 
-Fabriquer des classes à la volée, équivalent des :keyword:`lambda` mais pour
+Fabriquer/Modifier des classes à la volée, équivalent des :keyword:`lambda` mais pour
 les classes.
 
 Le constructeur d'une classe se fait en deux étapes.
@@ -146,6 +146,30 @@ classe en lui ajoutant des attributs et méthodes.
                 # ...
 
 On peut également créer des métaclasse grâce à l'outils :py:mod:`abc`.
+
+On va également pouvoir modifier le comportement de la classe (et non plus de l'instance).
+On peut par exemple faire des surcharges de méthodes spéciales::
+
+    # Classe n'ayant pas de métaclasse particulière
+    class A:
+        pass
+
+    print(A)  # affiche "<class '__main__.A'>"
+
+    # *** Exemple avec une métaclasse ***
+    # déclaration de la métaclasse
+    class MyMeta(type):
+        def __str__(self):
+            return "<my super class '{}'>".format(self.__name__)
+
+    # déclaration de la classe utilisant la métaclasse
+    class A(metaclass=MyMeta):
+        pass
+
+    print(A)  # affiche "<my super class 'A'>"
+
+On modifie donc bien le comportement de la classe et non plus de l'objet.
+
 
 Singleton
 ---------
