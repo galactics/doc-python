@@ -366,3 +366,33 @@ va redémarrer à l'endroit où il s'était arrété.
     16
 
 Voir :ref:`generator-types` et l'article de `Sam&Max <http://sametmax.com/comment-utiliser-yield-et-les-generateurs-en-python/>`_
+
+Il est bien sur également possible de créer des générateur non
+itératifs, du type de
+
+.. code-block:: python
+
+    >>> def creer_generateur_2():
+    ...     print("un !")
+    ...     yield
+    ...
+    ...     print("deux !")
+    ...     yield
+    ...
+    ...     print("trois !")
+    ...     yield
+    ...
+    ...     print("quatre !")
+    ...
+    >>> my_generator = creer_generateur_2()
+    >>> next(my_generator)
+    un !
+    >>> next(my_generator)
+    deux !
+    >>> next(my_generator)
+    trois !
+    >>> next(my_generator)
+    quatre !
+    Traceback (most recent call last):
+      ...
+    StopIteration
