@@ -17,6 +17,7 @@ Références
 * `Python Module Of The Week <http://pymotw.com/2/>`_ présentation des modules de la stdlib. Très complets
 * `Sam\&Max <http://sametmax.com>`_
 * `Intermediate Python <http://book.pythontips.com/en/latest/>`_
+* `Best of the Best Practices <https://gist.github.com/sloria/7001839>`_
 
 TODO
 ====

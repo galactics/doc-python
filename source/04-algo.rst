@@ -168,3 +168,7 @@ syntaxe.
         # des trucs...
         return 4
 
+Co-routines
+-----------
+
+Une explication claire et simple `ici <http://benno.id.au/blog/2015/05/25/await1>`_ et le tutoriel un peu plus complet de S&M `là <http://sametmax.com/quest-ce-quune-coroutine-en-python-et-a-quoi-ca-sert/>`_

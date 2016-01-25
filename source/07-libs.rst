@@ -14,7 +14,7 @@ Package
 doit contenir au moins 1 caractère pour d'obscures raisons de suppression de
 fichiers vides par windows lors des zip/unzip.
 
-Si on souhaite créer un packages vide, qui n'a vocation qu'à contenir d'autres
+Si on souhaite créer un package vide, qui n'a vocation qu'à contenir d'autres
 packages, il faut créer un fichier ``__init__.py`` contenant::
 
     __import__("pkg_resources").declare_namespace(__name__)

@@ -170,6 +170,8 @@ On peut par exemple faire des surcharges de méthodes spéciales::
 
 On modifie donc bien le comportement de la classe et non plus de l'objet.
 
+Des articles explicatifs `ici <http://eli.thegreenplace.net/2011/08/14/python-metaclasses-by-example/>`_ et
+`là <http://sametmax.com/le-guide-ultime-et-definitif-sur-la-programmation-orientee-objet-en-python-a-lusage-des-debutants-qui-sont-rassures-par-les-textes-detailles-qui-prennent-le-temps-de-tout-expliquer-partie-8/>`_
 
 Singleton
 ---------
