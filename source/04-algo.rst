@@ -155,7 +155,8 @@ type de variable.
 
 Ce typage statique de certaines portions permet, en plus de donner une
 indication directe des types attendus, de faire des optimisation mémoire par
-l'interpréteur. Quelques infos `ici <http://sametmax.com/point-rapide-sur-les-types-hints/>`_.
+l'interpréteur `mypy <http://mypy-lang.org/>`_.
+Quelques infos `ici <http://sametmax.com/point-rapide-sur-les-types-hints/>`__.
 
 Ce n'est pas incompatible avec des valeurs par défaut. Ça alourdit un peu la
 syntaxe.
@@ -171,4 +172,4 @@ syntaxe.
 Co-routines
 -----------
 
-Une explication claire et simple `ici <http://benno.id.au/blog/2015/05/25/await1>`_ et le tutoriel un peu plus complet de S&M `là <http://sametmax.com/quest-ce-quune-coroutine-en-python-et-a-quoi-ca-sert/>`_
+Une explication claire et simple `ici <http://benno.id.au/blog/2015/05/25/await1>`__ et le tutoriel un peu plus complet de S&M `là <http://sametmax.com/quest-ce-quune-coroutine-en-python-et-a-quoi-ca-sert/>`_
