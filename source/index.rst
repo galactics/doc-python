@@ -30,6 +30,7 @@ Plan
     06-tools
     07-libs
     08-divers
+    09-calculs
 
 Indices et tables
 ==================
