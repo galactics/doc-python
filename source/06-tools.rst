@@ -58,6 +58,11 @@ Fonctionne sur le modèle des recipes
 
 Lu ici-et-là qu'il est quand même assez lourd et difficilement configurable.
 
+twine
+^^^^^
+
+`Ça <https://packaging.python.org/en/latest/distributing/#upload-your-distributions>`__ sert à envoyer vers PyPi les wheels et autres eggs.
+
 Debug
 -----
 
