@@ -172,4 +172,4 @@ syntaxe.
 Co-routines
 -----------
 
-Une explication claire et simple `ici <http://benno.id.au/blog/2015/05/25/await1>`__ et le tutoriel un peu plus complet de S&M `là <http://sametmax.com/quest-ce-quune-coroutine-en-python-et-a-quoi-ca-sert/>`_
+Une explication claire et simple `ici <http://benno.id.au/blog/2015/05/25/await1>`__ et le tutoriel un peu plus complet de S&M `là <http://sametmax.com/quest-ce-quune-coroutine-en-python-et-a-quoi-ca-sert/>`__ et apparement la bible c'est `ça <http://www.snarky.ca/how-the-heck-does-async-await-work-in-python-3-5>`__.
