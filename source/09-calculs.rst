@@ -261,7 +261,7 @@ Précision numérique
     >>> 0.1.as_integer_ratio()
     (3602879701896397, 36028797018963968)
 
-Bonne article `ici <goldberg>`_.
+Bon article `ici <goldberg>`_.
 
 .. _goldberg: http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html
 
