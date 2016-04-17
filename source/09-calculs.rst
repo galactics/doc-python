@@ -58,6 +58,47 @@ les arbres d'appels::
     $ valgrind --tool=callgrind <cmd>  # assez lent
     $ kcachegrind callgrind.out.<pid>
 
+Compilation
+===========
+
+Certaines librairies telles que `Numba <http://numba.pydata.org/>`__ permettent de compiler
+des parties de codes pour en améliorer les temps de calculs.
+
+Le simple ajout du décorateur ``@jit`` sur une fonction permet un gain de vitesse
+quasi-comparable à un numpy bien compilé
+
+.. code-block:: python
+
+    import time
+    import numpy as np
+    from numba import jit
+
+    # jit decorator tells Numba to compile this function.
+    # The argument types will be inferred by Numba when function is called.
+    @jit
+    def sum2d(arr):
+        M, N = arr.shape
+        result = 0.0
+        for i in range(M):
+            for j in range(N):
+                result += arr[i,j]
+        return result
+
+    a = np.random.rand(100,100)
+    start = time.time()
+
+    for i in range(10000):
+        if i % 100 == 0:
+            print(i)
+        sum2d(a)
+        # np.sum(a)
+
+    end = time.time()
+    print("{:0.3f} s".format(end - start))
+
+`Numba` est inclus dans :ref:`Anaconda <anaconda>`.
+
+D'autres librairies comparables existent: `Nuitka <http://nuitka.net/>`__, `Parakeet <http://parakeetpython.com/>`__ et `Hope <http://pythonhosted.org/hope/>`__ par exemple.
 
 Parallélisation
 ===============
