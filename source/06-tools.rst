@@ -63,6 +63,18 @@ twine
 
 `Ça <https://packaging.python.org/en/latest/distributing/#upload-your-distributions>`__ sert à envoyer vers PyPi les wheels et autres eggs.
 
+.. _anaconda:
+
+Anaconda
+^^^^^^^^
+
+`Anaconda <https://www.continuum.io/downloads>`__ est un package installable sur Linux,
+OS X ou Windows contenant un intérpréteur python indépendant avec plus de 400 librairies
+incluses (matplotlib, numpy, pandas, etc.).
+
+Une version light, `Miniconda <http://conda.pydata.org/miniconda.html>`__, permet de
+l'installer à peu près n'importe où.
+
 Debug
 -----
 
