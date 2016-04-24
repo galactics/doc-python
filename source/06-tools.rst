@@ -18,6 +18,12 @@ pew
 `pew <https://github.com/berdario/pew>`_ permet de créer un shell complet avec
 l'environnement de virtualenv.
 
+pyvenv
+^^^^^^
+
+À partir de python 3.3 le module :py:mod:`venv` permet de créer des environements
+virtuels nativement
+
 Déploiement
 -----------
 
@@ -228,3 +234,13 @@ Par contre ce n'est pas super précis, parce que python n'a que des références
 Ça ne correspond donc pas vraiment à ce qui est fait par python en mémoire.
 
 .. note:: ça ne remplacera pas gdb pour la détection de fuites.
+
+Autre
+-----
+
+Les outils comme `flake8 <https://pypi.python.org/pypi/flake8>`__ ou
+`pep8 <https://pypi.python.org/pypi/pep8>`__ permettent de vérifier la
+conformité du code à la :pep:`8`.
+
+`radon <https://pypi.python.org/pypi/radon>`__ permet de se faire une idée de
+la complexitée du code et de sa maintenabilité.
