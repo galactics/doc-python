@@ -235,6 +235,25 @@ Par contre ce n'est pas super précis, parce que python n'a que des références
 
 .. note:: ça ne remplacera pas gdb pour la détection de fuites.
 
+Temps d'exécution
+-----------------
+
+La librairie :py:mod:`timeit` permet de mesurer les temps d'exécutions de différentes
+fonction
+
+.. code-block:: python
+
+    import timeit
+
+    def func_a()
+        # ...
+
+    def func_b()
+        # ...
+
+    print(timeit.timeit('func_a()', globals=globals()))
+    print(timeit.timeit('func_b()', globals=globals()))
+
 Autre
 -----
 
