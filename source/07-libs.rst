@@ -4,7 +4,7 @@ Librairies
 Package et Module
 =================
 
-Le sujet de la création de package est module est le sujet d'un tuto
+Le sujet de la création de package et module est le sujet d'un tuto
 `ici <http://www.dabeaz.com/modulepackage/ModulePackage.pdf>`_
 
 Package
