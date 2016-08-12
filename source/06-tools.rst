@@ -130,41 +130,6 @@ la docstring.
 
 Cf. `Sam\&Max <http://sametmax.com/un-gros-guide-bien-gras-sur-les-tests-unitaires-en-python-partie-4/>`__
 
-unitttest
-^^^^^^^^^
-
-.. code-block:: python
-
-    import unittest
-
-    class TestTools(unittest.TestCase):
-
-        def testCompute(self):
-            from cs.formation import compute
-
-            self.assertEquals(compute(2,5), 7)
-            self.assertRaises(TypeError, compute, 2,'3')
-            self.assertRaises(TypeError, compute, 2, 3, 5)
-
-    if __name__ == '__main__':
-        unittest.main()
-
-Cf. `Sam\&Max <http://sametmax.com/un-gros-guide-bien-gras-sur-les-tests-unitaires-en-python-partie-2/>`__
-
-nosetest
-^^^^^^^^
-
-.. code-block:: shell
-
-    pip install nose
-
-Permet de lancer des tests de tous types (unittest, doctest, etc) et d'avoir
-la couverture de ceux-ci.
-
-.. code-block:: shell
-
-    nosetests --with-doctest --with-coverage -v myProject/
-
 py.test
 ^^^^^^^
 
@@ -187,6 +152,22 @@ Il y a aussi une foule d'options sympa:
     * ne lancer que les tests dont le nom contient une expression
     * ignorer un path
     * tester aussi les doctest, unittest et nose
+
+mocks
+^^^^^
+
+En modifiant les comportements à la vollée des fonctions et classes utilisées,
+on peut éviter d'avoir à mettre en place tout un environnement de test bien lourd.
+
+Par exemple, si fait un utilitaire qui se connecte à une base de donnée,
+on peut simuler cette connexion et les réponses faites par la base sans en monter
+une de toute pièce. C'est moins couteux !
+
+Bon du coup, c'est parfois un peu lourdingue à mettre en place, mais ça permet
+de vraiment aller tester dans les tréfonds.
+
+Et l'inévitable lien vers l'article de `Sam\&Max <http://sametmax.com/un-gros-guide-bien-gras-sur-les-tests-unitaires-en-python-partie-5/>`__
+qui explique tout.
 
 tox
 ^^^
