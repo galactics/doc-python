@@ -48,6 +48,24 @@ conflit les unes par rapport aux autres.
 
 .. _Pypi: https://pypi.python.org/pypi
 
+Pour permettre d'installer simplement les dépendances d'une librairie, on peut
+faire un fichier ``requirements.txt`` qu'on va remplir grâce à la commande
+``pip freeze > requirements.txt``.
+
+Mais il vaut mieux prendre ça comme base de travail, et l'améliorer un peu.
+Sinon les versions sont trop figées, et il n'est pas dit qu'on puisse facilement
+les retouver pour chaque librairie
+
+.. code-block:: text
+
+    # bien
+    pbr
+    Routes!=2.0,!=2.1,!=2.3.0,>=1.12.3;python_version=='2.7'
+    Routes!=2.0,!=2.3.0,>=1.12.3;python_version!='2.7'
+
+    # pas bien
+    cryptography=1.3.0
+
 buildout
 ^^^^^^^^
 
@@ -80,6 +98,20 @@ incluses (matplotlib, numpy, pandas, etc.).
 
 Une version light, `Miniconda <http://conda.pydata.org/miniconda.html>`__, permet de
 l'installer à peu près n'importe où.
+
+Anaconda fait un peu tout en même temps: Environement virtuel, gestionnaire de paquets historisé,
+etc.
+
+**Import/export d'environement**
+
+De la même manière que pour `pip`, on peut créer un fichier qui permettra d'installer
+toutes les dépendances nécessaires avec la commande ``conda list -e > conda-requirements.txt``.
+On peut ensuite installer les paquets dans un nouvel environnement via
+``conda install --file conda-requirements.txt``.
+
+On peut également déléguer l'installation de certains paquets à pip via le fichier
+``conda env export -n <name> > env.yml``, puis tout installer via la commande
+``conda env create -f=env.yml``. Cette méthode est à préférer.
 
 Debug
 -----
