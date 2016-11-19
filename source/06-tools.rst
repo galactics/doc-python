@@ -248,6 +248,16 @@ Par contre ce n'est pas super précis, parce que python n'a que des références
 
 .. note:: ça ne remplacera pas gdb pour la détection de fuites.
 
+Une autre alternative qui fait de beau graphes et PyCallGraph
+
+.. code-block:: python
+
+    from pycallgraph import PyCallGraph
+    from pycallgraph.output import GraphvizOutput
+
+    with PyCallGraph(output=GraphvizOutput()):
+        # Code à profiler
+
 Temps d'exécution
 -----------------
 
