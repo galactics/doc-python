@@ -222,6 +222,9 @@ Documentation
 Profiling
 ---------
 
+Profiling de fonctions
+^^^^^^^^^^^^^^^^^^^^^^
+
 .. code-block:: shell
 
     python -m cProfile -o profile.pstats fibo.py
@@ -235,20 +238,7 @@ pour avoir le nombre d'appels sur chaque fonction.
 
 .. image:: _static/profiling.png
 
-On peut également utiliser
-
-.. code-block:: shell
-
-    pip install memory_profiler
-
-qui fait du profiling ligne par ligne et fournit également le décorateur
-``@profile``.
-Par contre ce n'est pas super précis, parce que python n'a que des références.
-Ça ne correspond donc pas vraiment à ce qui est fait par python en mémoire.
-
-.. note:: ça ne remplacera pas gdb pour la détection de fuites.
-
-Une autre alternative qui fait de beau graphes et PyCallGraph
+Une alternative qui fait de beau graphes et PyCallGraph
 
 .. code-block:: python
 
@@ -257,6 +247,30 @@ Une autre alternative qui fait de beau graphes et PyCallGraph
 
     with PyCallGraph(output=GraphvizOutput()):
         # Code à profiler
+
+Profiling ligne à ligne
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: shell
+
+    $ pip install line_profiler
+    $ kernprof -v -l <script.py>
+
+qui fait du profiling ligne par ligne et fournit également le décorateur
+``@profile`` à utiliser sur les fonctions qu'on souhaite profiler.
+
+Il y a aussi 
+
+.. code-block:: shell
+
+    pip install memory_profiler
+
+Lui aussi fournit un décorateur ``@profile``.
+Par contre ce n'est pas super précis, parce que python n'a que des références.
+Ça ne correspond donc pas vraiment à ce qui est fait par python en mémoire.
+
+.. note:: ça ne remplacera pas gdb pour la détection de fuites.
+
 
 Temps d'exécution
 -----------------
