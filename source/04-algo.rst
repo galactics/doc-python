@@ -122,6 +122,39 @@ Exceptions
       File "<input>", line 2, in <module>
     ZeroDivisionError: integer division or modulo by zero
 
+Pour la tracabilité d'une exeception, on peut utiliser la syntaxe suivante
+
+.. code-block:: python
+
+    try:
+        5 / 0
+    except ZeroDivisionError as e:
+        raise ValueError("Something went wrong") from e
+
+De plus, pour une gestion plus simple des cas d'erreur, à la place d'utiliser
+la syntaxe
+
+.. code-block:: python
+
+    foo = 5
+
+    try:
+        raise ValueError("value of foo too high ({})".format(foo))
+
+on peut utiliser la suivante
+
+.. code-block:: python
+
+    foo = 5
+
+    try:
+        raise ValueError("Value of foo too high", foo )
+    except ValueError as e:
+        print(e.args)
+        if e.args[1] == 5:
+            print("special case")
+
+
 Context Manager
 ---------------
 
