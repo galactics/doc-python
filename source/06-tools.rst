@@ -30,6 +30,8 @@ Déploiement
 setuptools
 ^^^^^^^^^^
 
+Librairie permettant l'installation d'un package. La doc `ici <https://setuptools.readthedocs.io/en/latest/>`__.
+
 .. code-block:: shell
 
     python setup.py develop
