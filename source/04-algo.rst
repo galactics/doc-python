@@ -32,6 +32,28 @@ Pour pouvoir la modifier dans un sous-scope, il faut la décraler comme
 En python 3 on peut utiliser :keyword:`nonlocal` qui permet d'accéder au scope
 directement au-dessus.
 
+Closure
+-------
+
+Lors de la création d'une fonction, son environnement est stocké (dans l'attribut
+de fonction ``__closure__``, mais c'est transparent pour le développeur).
+Ce qui permet de définir des comportements dans certains contextes
+
+.. code-block:: python
+
+    def myfunc_builder(x):
+
+        def myfunc(y):
+            return x + y
+
+        return myfunc
+
+    func1 = myfunc_builder(1)
+    func2 = myfunc_builder(2)
+
+    func1(5)  # 6
+    func2(5)  # 7
+
 Fonctions
 ---------
 
