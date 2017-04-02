@@ -224,14 +224,24 @@ Documentation
 Profiling
 ---------
 
+`Ici <https://toucantoco.com/back/2017/01/16/python-performance-optimization.html>`__
+
 Profiling de fonctions
 ^^^^^^^^^^^^^^^^^^^^^^
+
+Pour avoir le temps cumulé passé dans chaque fonction
+
+.. code-block:: shell
+
+    python -m cProfile -s tottime fibo.py
+
+Pour avoir le nombre d'appels de chaque fonction
 
 .. code-block:: shell
 
     python -m cProfile -o profile.pstats fibo.py
 
-pour avoir le nombre d'appels sur chaque fonction.
+Sortie graphique
 
 .. code-block:: shell
 
