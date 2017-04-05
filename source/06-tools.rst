@@ -203,6 +203,8 @@ de vraiment aller tester dans les tréfonds.
 Et l'inévitable lien vers l'article de `Sam\&Max <http://sametmax.com/un-gros-guide-bien-gras-sur-les-tests-unitaires-en-python-partie-5/>`__
 qui explique tout.
 
+Et quand les mocks ne font pas ce qu'on veut, c'est souvent qu'on fait pas `ce qu'il faut <http://alexmarandon.com/articles/python_mock_gotchas/>`__
+
 tox
 ^^^
 
