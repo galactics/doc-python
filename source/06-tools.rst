@@ -24,8 +24,16 @@ pyvenv
 À partir de python 3.3 le module :py:mod:`venv` permet de créer des environements
 virtuels nativement
 
-Déploiement
------------
+Packaging et déploiement
+------------------------
+
+`Doc officielle <https://packaging.python.org/en/latest/>`__ sur le packaging
+
+Data
+^^^^
+
+Pour ajouter des données tierces aux paquets la meilleure manière est d'ajouter un fichier
+``MANIFEST.in`` contenant la liste des fichiers à inclure (possibilité de globbing).
 
 setuptools
 ^^^^^^^^^^
@@ -37,6 +45,12 @@ Librairie permettant l'installation d'un package. La doc `ici <https://setuptool
     python setup.py develop
 
 permet de faire un lien symbolique vers la librairie en cours de développement.
+
+Pour générer les paquets de distribution, les commandes suivantes sont disponibles::
+
+    python setup.py sdist        # Distribution des sources
+    python setup.py bdist        # Distribution binaire sous forme d'egg (obsolète)
+    python setup.py bdist_wheel  # Distribution binaire sous forme de wheel
 
 .. _my pip:
 
@@ -68,26 +82,15 @@ les retouver pour chaque librairie
     # pas bien
     cryptography=1.3.0
 
-buildout
-^^^^^^^^
+Pour installer une librairie en cours de développement (comme dans le cas de setuptools)
+on peut faire::
 
-Gestionnaire d'installation et de dépendences, qui permet apparement d'isoler
-de gérer assez finement les impacts que ça peut avoir sur le système
-(site-packages, versions concurentes). Il y de gros tutos et guides
-sur le `site officiel <http://www.buildout.org/en/latest/>`_.
-
-À installer depuis `bootstrap <http://downloads.buildout.org/2/bootstrap.py>`_,
-
-Fonctionne sur le modèle des recipes
-
-.. todo:: à compléter
-
-Lu ici-et-là qu'il est quand même assez lourd et difficilement configurable.
+    pip install -e .
 
 twine
 ^^^^^
 
-`Ça <https://packaging.python.org/en/latest/distributing/#upload-your-distributions>`__ sert à envoyer vers PyPi les wheels et autres eggs.
+`twine <https://packaging.python.org/en/latest/distributing/#upload-your-distributions>`__ sert à envoyer vers PyPi les wheels et autres eggs.
 
 .. _anaconda:
 
