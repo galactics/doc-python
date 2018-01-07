@@ -255,7 +255,7 @@ Sortie graphique
 
 .. image:: _static/profiling.png
 
-Une alternative qui fait de beau graphes et PyCallGraph
+Une alternative qui fait de beau graphes est PyCallGraph
 
 .. code-block:: python
 
