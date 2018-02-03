@@ -222,3 +222,9 @@ Il existe un pattern de Singleton alternatif : le `Borg`_. Il permet le partage
 des états entre objets et non de l'instance.
 
 .. _Borg: http://code.activestate.com/recipes/66531-singleton-we-dont-need-no-stinkin-singleton-the-bo/
+
+Les patterns
+------------
+
+Brandon Rhodes fait un site détaillant les `Designs Patterns <http://python-patterns.guide/>`__
+appliqués à Python
