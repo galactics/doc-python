@@ -1,6 +1,30 @@
 Outils
 ======
 
+Performances
+------------
+
+CPython
+^^^^^^^
+
+Faire un module python en C/C++ permet de bénéficier de la vitesse de ces derniers.
+Il a une véritable complexité associée à ce genre de montage, mais les bénéfices
+peuvent être importants; La `doc <https://docs.python.org/3/extending/index.html#extending-index>`__ dans la doc officielle python.
+
+CFFI
+^^^^
+
+Le principe : Aller chercher directement dans une librairie dynamique les fonctions
+dont on a besoin, par reconnaissance de signature de fonction.
+
+Une petite mise en bouche sur le site de `Sam&Max <http://sametmax.com/introduction-aux-extensions-python-avec-cffi/>`__ et la `doc <https://cffi.readthedocs.io/en/latest/>`__ du projet.
+
+Autre
+^^^^^
+
+Il est aussi possible de fonctionner avec :ref:`Numba ou autre <compil>`
+
+
 Développement
 -------------
 

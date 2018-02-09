@@ -58,6 +58,8 @@ les arbres d'appels::
     $ valgrind --tool=callgrind <cmd>  # assez lent
     $ kcachegrind callgrind.out.<pid>
 
+.. _compil:
+
 Compilation
 ===========
 
