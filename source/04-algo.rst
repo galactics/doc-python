@@ -176,6 +176,19 @@ on peut utiliser la suivante
         if e.args[1] == 5:
             print("special case")
 
+Custom exceptions
+^^^^^^^^^^^^^^^^^
+
+Il est également possible de créer ses propres exceptions, afin de faire
+remonter des erreurs spécifiques à son programme.
+
+Un petit guide sur les bonnes pratiques `ici <https://julien.danjou.info/python-exceptions-guide/>`__
+
+.. code-block:: text
+
+    You might say that the exception type specifies what went wrong,
+    whereas the message / attributes specify how it went wrong.
+
 
 Context Manager
 ---------------
