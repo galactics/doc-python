@@ -76,6 +76,11 @@ Pour générer les paquets de distribution, les commandes suivantes sont disponi
     python setup.py bdist        # Distribution binaire sous forme d'egg (obsolète)
     python setup.py bdist_wheel  # Distribution binaire sous forme de wheel
 
+Il est également possible de configurer setuptools pour utiliser `un fichier
+setup.cfg <https://setuptools.readthedocs.io/en/latest/setuptools.html#configuring-setup-using-setup-cfg-files>`__
+en lieu et place de ``setup.py``. Pour les projets de petite et moyenne envergure c'est souvent
+plus adéquate.
+
 .. _my pip:
 
 pip
